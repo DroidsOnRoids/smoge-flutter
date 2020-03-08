@@ -29,9 +29,9 @@ class ActivitiesWidget extends StatelessWidget {
           _buildSpacing(),
           _buildActivityItem(context, Image.asset(AppIcons.run), "Running"),
           _buildSpacing(),
-          _buildActivityItem(context, Image.asset(AppIcons.run), "Walking"),
+          _buildActivityItem(context, Image.asset(AppIcons.walking), "Walking"),
           _buildSpacing(),
-          _buildActivityItem(context, Image.asset(AppIcons.run), "Biking"),
+          _buildActivityItem(context, Image.asset(AppIcons.cycle), "Biking"),
           _buildSpacing(),
         ],
       );
@@ -95,11 +95,14 @@ class ActivitiesWidget extends StatelessWidget {
             child: activityIcon,
           ),
           SizedBox(height: 10),
-          Text(
-            title,
-            style: Theme.of(context).textTheme.body1,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+          Opacity(
+            opacity: 0.75,
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.body1,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           )
         ],
       );
@@ -111,9 +114,6 @@ class ActivitiesWidget extends StatelessWidget {
   Widget _buildWarningBadge() => Container(
         width: _Constants.badgeSize,
         height: _Constants.badgeSize,
-        decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(_Constants.badgeSize / 2.0)),
-        child: Center(child: Text("!", style: TextStyle(color: Colors.white))),
+        child: Image.asset(AppIcons.warning),
       );
 }

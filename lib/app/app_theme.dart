@@ -5,6 +5,7 @@ ThemeData appThemeData() => ThemeData(
       primaryColor: Colors.white,
       accentColor: Color(0xFF278CFF),
       backgroundColor: Colors.white,
+      fontFamily: "Roboto",
       textTheme: TextTheme(
         title: TextStyle(
           fontSize: 72,
