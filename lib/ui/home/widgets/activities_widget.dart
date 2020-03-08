@@ -27,11 +27,26 @@ class ActivitiesWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           _buildSpacing(),
-          _buildActivityItem(context, Image.asset(AppIcons.run), "Running"),
+          _buildActivityItem(
+            context,
+            Image.asset(AppIcons.run),
+            "Running",
+            runningQuality,
+          ),
           _buildSpacing(),
-          _buildActivityItem(context, Image.asset(AppIcons.walking), "Walking"),
+          _buildActivityItem(
+            context,
+            Image.asset(AppIcons.walking),
+            "Walking",
+            walkingQuality,
+          ),
           _buildSpacing(),
-          _buildActivityItem(context, Image.asset(AppIcons.cycle), "Biking"),
+          _buildActivityItem(
+            context,
+            Image.asset(AppIcons.cycle),
+            "Biking",
+            bikingQuality,
+          ),
           _buildSpacing(),
         ],
       );
@@ -40,6 +55,7 @@ class ActivitiesWidget extends StatelessWidget {
     BuildContext context,
     Image activityIcon,
     String title,
+    ActivityQuality quality,
   ) =>
       Expanded(
         child: Stack(
@@ -51,7 +67,7 @@ class ActivitiesWidget extends StatelessWidget {
               ),
               child: _buildActivityContainer(context, activityIcon, title),
             ),
-            Positioned(right: 0, top: 0, child: _buildWarningBadge()),
+            Positioned(right: 0, top: 0, child: _buildWarningBadge(quality)),
           ],
         ),
       );
@@ -111,9 +127,18 @@ class ActivitiesWidget extends StatelessWidget {
         width: _Constants.itemSpacing - _Constants.badgeSize / 2,
       );
 
-  Widget _buildWarningBadge() => Container(
-        width: _Constants.badgeSize,
-        height: _Constants.badgeSize,
-        child: Image.asset(AppIcons.warning),
-      );
+  Widget _buildWarningBadge(ActivityQuality quality) {
+    switch (quality) {
+      case ActivityQuality.good:
+        return Container();
+      case ActivityQuality.bad:
+        return Container(
+          width: _Constants.badgeSize,
+          height: _Constants.badgeSize,
+          child: Image.asset(AppIcons.warning),
+        );
+    }
+
+    return Container();
+  }
 }

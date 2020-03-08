@@ -17,39 +17,45 @@ class HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Text(
-                "Wroclaw",
-                style: Theme.of(context).textTheme.subhead,
-                textAlign: TextAlign.center,
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Expanded(child: Container()),
-                    AnimatedPercentageWidget(),
-                    Text("norm", style: Theme.of(context).textTheme.subtitle),
-                    Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Opacity(opacity: 0.5, child: Text("Details")),
-                          SizedBox(height: 5),
-                          Image.asset(AppIcons.arrowDown, width: 7, height: 7),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              _buildTitle(),
+              _buildExpandedContent(),
               _buildActivitiesWidget(),
             ],
           ),
         ),
       );
 
+  Widget _buildTitle() => Text(
+        "Wroclaw",
+        style: Theme.of(context).textTheme.subhead,
+        textAlign: TextAlign.center,
+      );
+
+  Widget _buildExpandedContent() => Expanded(
+        child: Column(
+          children: <Widget>[
+            Expanded(child: Container()),
+            AnimatedPercentageWidget(value: 310),
+            Text("norm", style: Theme.of(context).textTheme.subtitle),
+            _buildDetailsWidget(),
+          ],
+        ),
+      );
+
+  Widget _buildDetailsWidget() => Expanded(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Opacity(opacity: 0.5, child: Text("Details")),
+            SizedBox(height: 5),
+            Image.asset(AppIcons.arrowDown, width: 7, height: 7),
+          ],
+        ),
+      );
+
   Widget _buildActivitiesWidget() => ActivitiesWidget(
         runningQuality: ActivityQuality.good,
         walkingQuality: ActivityQuality.good,
-        bikingQuality: ActivityQuality.good,
+        bikingQuality: ActivityQuality.bad,
       );
 }

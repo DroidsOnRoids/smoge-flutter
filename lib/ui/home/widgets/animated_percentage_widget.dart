@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AnimatedPercentageWidget extends StatefulWidget {
+  const AnimatedPercentageWidget({Key key, @required this.value})
+      : assert(value != null),
+        super(key: key);
+
+  final double value;
+
   @override
   State<StatefulWidget> createState() => _AnimatedPercentageWidgetState();
 }
@@ -21,7 +27,7 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0, end: 210).animate(_controller)
+    _animation = Tween<double>(begin: 0, end: widget.value).animate(_controller)
       ..addListener(() {
         setState(() {
           // The state that has changed here is the animation objects value
@@ -33,7 +39,7 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
   }
 
   @override
-  void dispose() {
+  Future<void> dispose() async {
     super.dispose();
 
     _controller.dispose();
