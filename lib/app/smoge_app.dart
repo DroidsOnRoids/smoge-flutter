@@ -7,6 +7,6 @@ class SmogeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) => MaterialApp(
         home: HomePage(),
-        theme: appThemeData(),
+        theme: AppThemeDataFactory.prepareThemeData(),
       );
 }

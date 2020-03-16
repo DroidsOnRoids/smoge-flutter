@@ -5,6 +5,5 @@ class AppIcons {
   static String run = '$_basePath/icon_run.png';
   static String cycle = '$_basePath/icon_cycle.png';
   static String walking = '$_basePath/icon_walking.png';
-  static String menu = '$_basePath/icon_menu.png';
   static String warning = '$_basePath/icon_warning.png';
 }

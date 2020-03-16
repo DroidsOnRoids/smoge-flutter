@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
-import 'package:smoge/ui/home/widgets/activities_widget.dart';
+import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
+import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
+import 'package:smoge/utils/strings.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -26,7 +28,7 @@ class HomePageState extends State<HomePage> {
       );
 
   Widget _buildTitle() => Text(
-        "Wroclaw",
+        Strings.exampleCityName,
         style: Theme.of(context).textTheme.subhead,
         textAlign: TextAlign.center,
       );
@@ -35,8 +37,11 @@ class HomePageState extends State<HomePage> {
         child: Column(
           children: <Widget>[
             Expanded(child: Container()),
-            AnimatedPercentageWidget(value: 310),
-            Text("norm", style: Theme.of(context).textTheme.subtitle),
+            AnimatedPercentageWidget(
+              fromValue: 0,
+              toValue: 310,
+            ),
+            Text(Strings.airQualityNorm, style: Theme.of(context).textTheme.subtitle),
             _buildDetailsWidget(),
           ],
         ),
@@ -46,16 +51,21 @@ class HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Opacity(opacity: 0.5, child: Text("Details")),
+            Opacity(opacity: 0.5, child: Text(Strings.details)),
             SizedBox(height: 5),
             Image.asset(AppIcons.arrowDown, width: 7, height: 7),
           ],
         ),
       );
 
-  Widget _buildActivitiesWidget() => ActivitiesWidget(
-        runningQuality: ActivityQuality.good,
-        walkingQuality: ActivityQuality.good,
-        bikingQuality: ActivityQuality.bad,
+  Widget _buildActivitiesWidget() => Padding(
+        padding: EdgeInsets.only(bottom: 16),
+        child: ActivitiesWidget(
+          activities: {
+            ActivityType.walking: ActivityQuality.good,
+            ActivityType.running: ActivityQuality.bad,
+            ActivityType.biking: ActivityQuality.bad,
+          },
+        ),
       );
 }

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
 class AnimatedPercentageWidget extends StatefulWidget {
-  const AnimatedPercentageWidget({Key key, @required this.value})
-      : assert(value != null),
+  const AnimatedPercentageWidget({
+    Key key,
+    @required this.fromValue,
+    @required this.toValue,
+    this.duration = const Duration(milliseconds: 1500),
+  })  : assert(fromValue != null),
+        assert(toValue != null),
+        assert(fromValue <= toValue),
         super(key: key);
 
-  final double value;
+  final double fromValue;
+  final double toValue;
+  final Duration duration;
 
   @override
   State<StatefulWidget> createState() => _AnimatedPercentageWidgetState();
@@ -23,26 +31,26 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
     super.initState();
 
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1500),
+      duration: widget.duration,
       vsync: this,
     );
 
-    _animation = Tween<double>(begin: 0, end: widget.value).animate(_controller)
-      ..addListener(() {
-        setState(() {
-          // The state that has changed here is the animation objects value
-          _number = _animation.value.toStringAsFixed(0);
-        });
-      });
+    _animation = Tween<double>(begin: widget.fromValue, end: widget.toValue)
+        .animate(_controller)
+          ..addListener(() {
+            setState(() {
+              _number = _animation.value.toStringAsFixed(0);
+            });
+          });
 
     _controller.forward();
   }
 
   @override
   Future<void> dispose() async {
-    super.dispose();
-
     _controller.dispose();
+
+    super.dispose();
   }
 
   @override

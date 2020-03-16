@@ -1,6 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
+import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
+import 'package:smoge/utils/strings.dart';
 
 abstract class _Constants {
   static const double iconSize = 30;
@@ -8,56 +9,17 @@ abstract class _Constants {
   static const double badgeSize = 15;
 }
 
-enum ActivityQuality { good, bad }
+enum ActivityType { walking, running, biking }
 
-class ActivitiesWidget extends StatelessWidget {
-  const ActivitiesWidget({
-    Key key,
-    this.runningQuality,
-    this.walkingQuality,
-    this.bikingQuality,
-  }) : super(key: key);
+class ActivityWidget extends StatelessWidget {
+  const ActivityWidget({Key key, this.activityType, this.activityQuality})
+      : super(key: key);
 
-  final ActivityQuality runningQuality;
-  final ActivityQuality walkingQuality;
-  final ActivityQuality bikingQuality;
+  final ActivityType activityType;
+  final ActivityQuality activityQuality;
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          _buildSpacing(),
-          _buildActivityItem(
-            context,
-            Image.asset(AppIcons.run),
-            "Running",
-            runningQuality,
-          ),
-          _buildSpacing(),
-          _buildActivityItem(
-            context,
-            Image.asset(AppIcons.walking),
-            "Walking",
-            walkingQuality,
-          ),
-          _buildSpacing(),
-          _buildActivityItem(
-            context,
-            Image.asset(AppIcons.cycle),
-            "Biking",
-            bikingQuality,
-          ),
-          _buildSpacing(),
-        ],
-      );
-
-  Widget _buildActivityItem(
-    BuildContext context,
-    Image activityIcon,
-    String title,
-    ActivityQuality quality,
-  ) =>
-      Expanded(
+  Widget build(BuildContext context) => Expanded(
         child: Stack(
           children: <Widget>[
             Padding(
@@ -65,9 +27,17 @@ class ActivitiesWidget extends StatelessWidget {
                 top: _Constants.badgeSize / 2,
                 right: _Constants.badgeSize / 2,
               ),
-              child: _buildActivityContainer(context, activityIcon, title),
+              child: _buildActivityContainer(
+                context,
+                _imageForActivityType(activityType),
+                _titleForActivityType(activityType),
+              ),
             ),
-            Positioned(right: 0, top: 0, child: _buildWarningBadge(quality)),
+            Positioned(
+              right: 0,
+              top: 0,
+              child: _buildWarningBadge(activityQuality),
+            ),
           ],
         ),
       );
@@ -123,10 +93,6 @@ class ActivitiesWidget extends StatelessWidget {
         ],
       );
 
-  Widget _buildSpacing() => SizedBox(
-        width: _Constants.itemSpacing - _Constants.badgeSize / 2,
-      );
-
   Widget _buildWarningBadge(ActivityQuality quality) {
     switch (quality) {
       case ActivityQuality.good:
@@ -140,5 +106,31 @@ class ActivitiesWidget extends StatelessWidget {
     }
 
     return Container();
+  }
+
+  Image _imageForActivityType(ActivityType activityType) {
+    switch (activityType) {
+      case ActivityType.walking:
+        return Image.asset(AppIcons.walking);
+      case ActivityType.running:
+        return Image.asset(AppIcons.run);
+      case ActivityType.biking:
+        return Image.asset(AppIcons.cycle);
+    }
+
+    return null;
+  }
+
+  String _titleForActivityType(ActivityType activityType) {
+    switch (activityType) {
+      case ActivityType.walking:
+        return Strings.activityWalking;
+      case ActivityType.running:
+        return Strings.activityRunning;
+      case ActivityType.biking:
+        return Strings.activityBiking;
+    }
+
+    return null;
   }
 }
