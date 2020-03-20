@@ -5,6 +5,7 @@ import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
+import 'package:smoge/ui/home/widgets/video_player_widget.dart';
 import 'package:smoge/utils/strings.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,15 +16,20 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              _buildTitle(),
-              _buildExpandedContent(),
-              _buildActivitiesWidget(),
-            ],
-          ),
+        body: Stack(
+          children: <Widget>[
+            VideoPlayerWidget(),
+            SafeArea(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  _buildTitle(),
+                  _buildExpandedContent(),
+                  _buildActivitiesWidget(),
+                ],
+              ),
+            ),
+          ],
         ),
       );
 
@@ -41,7 +47,8 @@ class HomePageState extends State<HomePage> {
               fromValue: 0,
               toValue: 310,
             ),
-            Text(Strings.airQualityNorm, style: Theme.of(context).textTheme.subtitle),
+            Text(Strings.airQualityNorm,
+                style: Theme.of(context).textTheme.subtitle),
             _buildDetailsWidget(),
           ],
         ),
