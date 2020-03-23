@@ -28,19 +28,17 @@ class ActivitiesWidget extends StatelessWidget {
       );
 
   List<Widget> _buildActivities() {
-    List<Widget> widgets = [];
-
-    widgets.add(SizedBox(width: _Constants.itemSpacing,));
+    List<Widget> widgets = [SizedBox(width: _Constants.itemSpacing)];
 
     activities.forEach((activityType, activityQuality) {
-      widgets.add(
-        ActivityWidget(
-          activityType: activityType,
-          activityQuality: activityQuality,
-        ),
-      );
-
-      widgets.add(_buildSpacing());
+      widgets
+        ..add(
+          ActivityWidget(
+            activityType: activityType,
+            activityQuality: activityQuality,
+          ),
+        )
+        ..add(_buildSpacing());
     });
 
     return widgets;

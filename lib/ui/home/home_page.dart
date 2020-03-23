@@ -18,7 +18,7 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) => Scaffold(
         body: Stack(
           children: <Widget>[
-            VideoPlayerWidget(),
+            VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
             SafeArea(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,

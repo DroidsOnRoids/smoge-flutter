@@ -9,6 +9,7 @@ class AnimatedPercentageWidget extends StatefulWidget {
   })  : assert(fromValue != null),
         assert(toValue != null),
         assert(fromValue <= toValue),
+        assert(duration != null),
         super(key: key);
 
   final double fromValue;
