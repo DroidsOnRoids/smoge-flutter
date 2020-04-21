@@ -5,6 +5,7 @@ import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
+import 'package:smoge/ui/home/widgets/menu_button_widget.dart';
 import 'package:smoge/ui/home/widgets/video_player_widget.dart';
 import 'package:smoge/utils/strings.dart';
 
@@ -26,6 +27,10 @@ class HomePageState extends State<HomePage> {
                   _buildTitle(),
                   _buildExpandedContent(),
                   _buildActivitiesWidget(),
+                  Align(
+                    child: MenuButtonWidget(onPressed: null),
+                    alignment: Alignment.bottomRight,
+                  )
                 ],
               ),
             ),
