@@ -2,9 +2,11 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
+import 'package:smoge/ui/common_widget/platform_padding.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
+import 'package:smoge/ui/common_widget/menu_button_widget.dart';
 import 'package:smoge/ui/home/widgets/video_player_widget.dart';
 import 'package:smoge/utils/strings.dart';
 
@@ -26,6 +28,14 @@ class HomePageState extends State<HomePage> {
                   _buildTitle(),
                   _buildExpandedContent(),
                   _buildActivitiesWidget(),
+                  PlatformPadding(
+                    iosPadding: EdgeInsets.zero,
+                    androidPadding: EdgeInsets.only(bottom: 16.0),
+                    child: Align(
+                      child: MenuButtonWidget(onPressed: null),
+                      alignment: Alignment.bottomRight,
+                    ),
+                  )
                 ],
               ),
             ),
@@ -66,7 +76,7 @@ class HomePageState extends State<HomePage> {
       );
 
   Widget _buildActivitiesWidget() => Padding(
-        padding: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(bottom: 40),
         child: ActivitiesWidget(
           activities: {
             ActivityType.walking: ActivityQuality.good,

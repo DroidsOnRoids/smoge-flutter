@@ -7,6 +7,7 @@ class AppThemeDataFactory {
         primaryColor: AppColors.primary,
         accentColor: AppColors.textPrimary,
         backgroundColor: AppColors.background,
+        buttonColor: AppColors.buttonColor,
         fontFamily: "Roboto",
         textTheme: TextTheme(
           title: TextStyle(
