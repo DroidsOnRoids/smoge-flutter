@@ -71,7 +71,7 @@ class HomePageState extends State<HomePage> {
       );
 
   Widget _buildActivitiesWidget() => Padding(
-        padding: EdgeInsets.only(bottom: 16),
+        padding: EdgeInsets.only(bottom: 40),
         child: ActivitiesWidget(
           activities: {
             ActivityType.walking: ActivityQuality.good,

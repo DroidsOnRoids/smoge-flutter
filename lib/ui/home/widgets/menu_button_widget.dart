@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 abstract class _Constants {
   static const double height = 45.0;
+  static const double cornerRadius = height / 2;
   static const int animationDuration = 200;
 }
 
@@ -29,14 +30,14 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
 
   @override
   void initState() {
+    super.initState();
+
     _isSelected = widget.isSelected;
     _rightPadding = 0.0;
     _animationController = AnimationController(
         duration: Duration(milliseconds: _Constants.animationDuration * 2),
         vsync: this
     );
-
-    super.initState();
   }
 
   @override
@@ -46,8 +47,8 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
         decoration: BoxDecoration(
           color: Theme.of(context).buttonColor,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(_Constants.height / 2),
-            bottomLeft: Radius.circular(_Constants.height / 2)
+            topLeft: Radius.circular(_Constants.cornerRadius),
+            bottomLeft: Radius.circular(_Constants.cornerRadius)
           ),
           boxShadow: [
             BoxShadow(
@@ -77,23 +78,21 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
 
   @override
   void dispose() {
-    super.dispose();
-
     _animationController.dispose();
+
+    super.dispose();
   }
 
   void _handlePress() {
     setState(() {
-      _isSelected = _isSelected ? false : true;
+      _isSelected = !_isSelected;
       _rightPadding = _isSelected ? 50.0 : 0.0;
       if (_isSelected) {
         _animationController.forward();
       } else {
         _animationController.reverse();
       }
-      if (widget.onPressed != null) {
-        widget.onPressed(_isSelected);
-      }
+      widget.onPressed?.call(_isSelected);
     });
   }
 }
