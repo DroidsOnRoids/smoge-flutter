@@ -62,7 +62,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
           padding: EdgeInsets.only(right: _rightPadding),
           duration: Duration(milliseconds: _Constants.animationDuration),
           curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
-          onEnd: () { setState(() { _rightPadding = 0.0; }); },
+          onEnd: () => setState(() => _rightPadding = 0.0),
           child: IconButton(
             icon: AnimatedIcon(
               icon: AnimatedIcons.menu_close,
