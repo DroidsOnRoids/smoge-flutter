@@ -52,9 +52,9 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
           ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).buttonColor.withAlpha(150),
-              blurRadius: 15.0,
-              offset: Offset(0, 8),
+              color: Theme.of(context).buttonColor.withAlpha(60),
+              blurRadius: 24.0,
+              offset: Offset(0, 15),
             )
           ]
         ),
@@ -62,7 +62,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
           padding: EdgeInsets.only(right: _rightPadding),
           duration: Duration(milliseconds: _Constants.animationDuration),
           curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
-          onEnd: () => setState(() => _rightPadding = 0.0),
+          onEnd: _paddingAnimationDidEnd,
           child: IconButton(
             icon: AnimatedIcon(
               icon: AnimatedIcons.menu_close,
@@ -75,6 +75,14 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
           ),
         ),
       );
+
+  @override
+  void didUpdateWidget(MenuButtonWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+
+    _isSelected = widget.isSelected;
+    _isSelected ? _animationController.forward() : _animationController.reverse();
+  }
 
   @override
   void dispose() {
@@ -91,8 +99,15 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
         _animationController.forward();
       } else {
         _animationController.reverse();
+        widget.onPressed?.call(_isSelected);
       }
-      widget.onPressed?.call(_isSelected);
     });
+  }
+
+  void _paddingAnimationDidEnd() {
+    if (_rightPadding != 0.0) {
+      setState(() => _rightPadding = 0.0);
+      widget.onPressed?.call(_isSelected);
+    }
   }
 }
