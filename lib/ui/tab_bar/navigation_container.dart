@@ -58,6 +58,13 @@ class _NavigationContainerState extends State<NavigationContainer>
         ),
       );
 
+  @override
+  void dispose() {
+    _controller.dispose();
+
+    super.dispose();
+  }
+
   void _tabDidChange(NavigationTab tab) {
     setState(() {
       _selectedTab = tab;
