@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smoge/utils/decorations.dart';
 
 abstract class _Constants {
   static const double height = 45.0;
@@ -41,40 +41,31 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Container(
-        height: _Constants.height,
-        decoration: BoxDecoration(
-          color: Theme.of(context).buttonColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(_Constants.cornerRadius),
-            bottomLeft: Radius.circular(_Constants.cornerRadius)
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).buttonColor.withAlpha(60),
-              blurRadius: 24.0,
-              offset: Offset(0, 15),
-            )
-          ]
+  Widget build(BuildContext context) => Container(
+    height: _Constants.height,
+    decoration: Decorations.buttonContainerDecoration(context).copyWith(
+      borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(_Constants.cornerRadius),
+          bottomLeft: Radius.circular(_Constants.cornerRadius)
+      ),
+    ),
+    child: AnimatedPadding(
+      padding: EdgeInsets.only(right: _rightPadding),
+      duration: Duration(milliseconds: _Constants.animationDuration),
+      curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
+      onEnd: _paddingAnimationDidEnd,
+      child: IconButton(
+        icon: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          progress: _animationController,
         ),
-        child: AnimatedPadding(
-          padding: EdgeInsets.only(right: _rightPadding),
-          duration: Duration(milliseconds: _Constants.animationDuration),
-          curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
-          onEnd: _paddingAnimationDidEnd,
-          child: IconButton(
-            icon: AnimatedIcon(
-              icon: AnimatedIcons.menu_close,
-              progress: _animationController,
-            ),
-            color: Colors.white,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onPressed: _handlePress,
-          ),
-        ),
-      );
+        color: Colors.white,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        onPressed: _handlePress,
+      ),
+    ),
+  );
 
   @override
   void didUpdateWidget(MenuButtonWidget oldWidget) {

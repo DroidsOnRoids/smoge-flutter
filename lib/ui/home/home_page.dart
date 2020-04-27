@@ -17,28 +17,21 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: Stack(
+  Widget build(BuildContext context) => Stack(
+    children: <Widget>[
+      VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
+      SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
-            SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  _buildTitle(),
-                  _buildExpandedContent(),
-                  _buildActivitiesWidget(),
-                  PlatformPadding(
-                    iosPadding: EdgeInsets.zero,
-                    androidPadding: EdgeInsets.only(bottom: 16.0),
-                    child: TabBarWidget()
-                  ),
-                ],
-              ),
-            ),
+            _buildTitle(),
+            _buildExpandedContent(),
+            _buildActivitiesWidget(),
           ],
         ),
-      );
+      ),
+    ],
+  );
 
   Widget _buildTitle() => Text(
         Strings.exampleCityName,

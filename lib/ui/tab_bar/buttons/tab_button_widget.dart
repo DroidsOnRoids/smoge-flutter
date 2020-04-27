@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
+import 'package:smoge/utils/decorations.dart';
 
 abstract class _Constants {
   static const size = 45.0;
@@ -36,16 +37,8 @@ class _TabButtonWidgetState extends State<TabButtonWidget> {
       margin: EdgeInsets.only(left: 25.0),
       height: _Constants.size,
       width: _Constants.size,
-      decoration: BoxDecoration(
-          color: Theme.of(context).buttonColor,
-          borderRadius: BorderRadius.circular(_Constants.size / 2),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).buttonColor.withAlpha(60),
-              blurRadius: 24.0,
-              offset: Offset(0, 15),
-            )
-          ]
+      decoration: Decorations.buttonContainerDecoration(context).copyWith(
+        borderRadius: BorderRadius.circular(_Constants.size / 2)
       ),
       child: IconButton(
         icon: widget.tab.icon,
