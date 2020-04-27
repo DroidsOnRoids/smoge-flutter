@@ -47,6 +47,7 @@ class _NavigationContainerState extends State<NavigationContainer>
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        extendBody: true,
         bottomNavigationBar: TabBarWidget(
           onTabChange: _tabDidChange,
           onBackPressed: _backDidTap,
