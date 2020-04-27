@@ -14,7 +14,8 @@ class NavigationContainer extends StatefulWidget {
   State<StatefulWidget> createState() => _NavigationContainerState();
 }
 
-class _NavigationContainerState extends State<NavigationContainer> {
+class _NavigationContainerState extends State<NavigationContainer>
+    with SingleTickerProviderStateMixin {
   final Map<NavigationTab, Widget> _pages = {
     NavigationTab.home: HomePage(),
     NavigationTab.measuringPoints: MeasuringPointsPage(),
@@ -23,21 +24,55 @@ class _NavigationContainerState extends State<NavigationContainer> {
   };
 
   NavigationTab _selectedTab;
+  Animation<double> _animation;
+  AnimationController _controller;
+
 
   @override
   void initState() {
     super.initState();
 
     _selectedTab = NavigationTab.home;
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1000),
+      vsync: this
+    );
+    _animation = Tween(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(_controller);
+
+    _controller.forward();
   }
 
   @override
   Widget build(BuildContext context) => Scaffold(
         bottomNavigationBar: TabBarWidget(
-          onTabChange: (tab) => setState(() => _selectedTab = tab),
-          onBackPressed: () =>
-              setState(() => _selectedTab = NavigationTab.home),
+          onTabChange: _tabDidChange,
+          onBackPressed: _backDidTap,
         ),
-        body: _pages[_selectedTab],
+        body: FadeTransition(
+          opacity: _animation,
+          child: _pages[_selectedTab]
+        ),
       );
+
+  void _tabDidChange(NavigationTab tab) {
+    setState(() {
+      _selectedTab = tab;
+      _reanimateContent();
+    });
+  }
+
+  void _backDidTap() {
+    setState(() {
+      _selectedTab = NavigationTab.home;
+      _reanimateContent();
+    });
+  }
+
+  void _reanimateContent() {
+    _controller.reset();
+    _controller.forward();
+  }
 }
