@@ -15,6 +15,6 @@ extension NavigationTabsIcons on NavigationTab {
         return Icon(Icons.settings);
     }
 
-    return null;
+    throw Exception("NavigationTab.icon - Unsatisfied switch cases");
   }
 }
