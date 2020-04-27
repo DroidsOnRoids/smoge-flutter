@@ -13,19 +13,18 @@ class BackButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-    height: _Constants.height,
-    decoration: Decorations.buttonContainerDecoration(context).copyWith(
-      borderRadius: BorderRadius.only(
-          topRight: Radius.circular(_Constants.cornerRadius),
-          bottomRight: Radius.circular(_Constants.cornerRadius)
-      ),
-    ),
-    child: IconButton(
-      icon: Icon(Icons.arrow_back),
-      color: Colors.white,
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      onPressed: () => onPressed?.call(),
-    ),
-  );
+        height: _Constants.height,
+        decoration: Decorations.buttonContainerDecoration(context).copyWith(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(_Constants.cornerRadius),
+              bottomRight: Radius.circular(_Constants.cornerRadius)),
+        ),
+        child: IconButton(
+          icon: Icon(Icons.arrow_back),
+          color: Colors.white,
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+          onPressed: () => onPressed?.call(),
+        ),
+      );
 }

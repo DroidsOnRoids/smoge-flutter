@@ -32,61 +32,62 @@ class _TabBarWidgetState extends State<TabBarWidget> {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(bottom: 45.0),
-    child: Stack(
-      alignment: Alignment.bottomRight,
-      children: <Widget>[
-        AnimatedPositioned(
-          duration: _Constants.animationDuration,
-          right: _areButtonsVisible ? 75.0 : 65.0,
-          height: 60.0,
-          child: AnimatedOpacity(
-            duration: _Constants.animationDuration,
-            opacity: _areButtonsVisible ? 1.0 : 0.0,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: NavigationTab.values
-                  .where((tab) => tab != NavigationTab.home)
-                  .map((tab) => TabButtonWidget(
-                tab: tab,
-                onPressed: () => _tabDidTap(tab),
-              )).toList(),
+        padding: const EdgeInsets.only(bottom: 45.0),
+        child: Stack(
+          overflow: Overflow.visible,
+          alignment: Alignment.bottomRight,
+          children: <Widget>[
+            AnimatedPositioned(
+              duration: _Constants.animationDuration,
+              right: _areButtonsVisible ? 75.0 : 65.0,
+              height: 60.0,
+              child: AnimatedOpacity(
+                duration: _Constants.animationDuration,
+                opacity: _areButtonsVisible ? 1.0 : 0.0,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: NavigationTab.values
+                      .where((tab) => tab != NavigationTab.home)
+                      .map((tab) => TabButtonWidget(
+                            tab: tab,
+                            onPressed: () => _tabDidTap(tab),
+                          ))
+                      .toList(),
+                ),
+              ),
             ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 15.0),
-          child: MenuButtonWidget(
-            onPressed: _menuDidTap,
-            isSelected: _areButtonsVisible,
-          ),
-        ),
-        AnimatedPositioned(
-          duration: _Constants.animationDuration,
-          left: _isBackButtonVisible ? 0.0 : -50.0,
-          curve: Curves.easeInOut,
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: BackButtonWidget(
-              onPressed: _backDidTap,
+            Padding(
+              padding: EdgeInsets.only(top: 15.0),
+              child: MenuButtonWidget(
+                onPressed: _menuDidTap,
+                isSelected: _areButtonsVisible,
+              ),
             ),
-          ),
-        )
-      ],
-    ),
-  );
+            AnimatedPositioned(
+              duration: _Constants.animationDuration,
+              left: _isBackButtonVisible ? 0.0 : -50.0,
+              curve: Curves.easeInOut,
+              child: BackButtonWidget(
+                onPressed: _backDidTap,
+              ),
+            )
+          ],
+        ),
+      );
 
   void _menuDidTap(bool isSelected) {
     setState(() => _areButtonsVisible = isSelected);
   }
 
   void _tabDidTap(NavigationTab tab) {
-    setState(() {
-      _areButtonsVisible = false;
-      _isBackButtonVisible = true;
-    });
-    widget.onTabChange?.call(tab);
+    if (_areButtonsVisible) {
+      setState(() {
+        _areButtonsVisible = false;
+        _isBackButtonVisible = true;
+      });
+      widget.onTabChange?.call(tab);
+    }
   }
 
   void _backDidTap() {

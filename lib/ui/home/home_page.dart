@@ -2,8 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
-import 'package:smoge/ui/tab_bar/tab_bar_widget.dart';
-import 'package:smoge/ui/common_widget/platform_padding.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
@@ -18,20 +16,20 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Stack(
-    children: <Widget>[
-      VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
-      SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            _buildTitle(),
-            _buildExpandedContent(),
-            _buildActivitiesWidget(),
-          ],
-        ),
-      ),
-    ],
-  );
+        children: <Widget>[
+          VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
+          SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _buildTitle(),
+                _buildExpandedContent(),
+                _buildActivitiesWidget(),
+              ],
+            ),
+          ),
+        ],
+      );
 
   Widget _buildTitle() => Text(
         Strings.exampleCityName,

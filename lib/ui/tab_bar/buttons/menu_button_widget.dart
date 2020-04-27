@@ -8,11 +8,8 @@ abstract class _Constants {
 }
 
 class MenuButtonWidget extends StatefulWidget {
-  const MenuButtonWidget({
-    Key key,
-    this.onPressed,
-    this.isSelected = false
-  })  : assert(isSelected != null),
+  const MenuButtonWidget({Key key, this.onPressed, this.isSelected = false})
+      : assert(isSelected != null),
         super(key: key);
 
   final Function(bool) onPressed;
@@ -36,43 +33,43 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
     _rightPadding = 0.0;
     _animationController = AnimationController(
         duration: Duration(milliseconds: _Constants.animationDuration * 2),
-        vsync: this
-    );
+        vsync: this);
   }
 
   @override
   Widget build(BuildContext context) => Container(
-    height: _Constants.height,
-    decoration: Decorations.buttonContainerDecoration(context).copyWith(
-      borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(_Constants.cornerRadius),
-          bottomLeft: Radius.circular(_Constants.cornerRadius)
-      ),
-    ),
-    child: AnimatedPadding(
-      padding: EdgeInsets.only(right: _rightPadding),
-      duration: Duration(milliseconds: _Constants.animationDuration),
-      curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
-      onEnd: _paddingAnimationDidEnd,
-      child: IconButton(
-        icon: AnimatedIcon(
-          icon: AnimatedIcons.menu_close,
-          progress: _animationController,
+        height: _Constants.height,
+        decoration: Decorations.buttonContainerDecoration(context).copyWith(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(_Constants.cornerRadius),
+              bottomLeft: Radius.circular(_Constants.cornerRadius)),
         ),
-        color: Colors.white,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onPressed: _handlePress,
-      ),
-    ),
-  );
+        child: AnimatedPadding(
+          padding: EdgeInsets.only(right: _rightPadding),
+          duration: Duration(milliseconds: _Constants.animationDuration),
+          curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
+          onEnd: _paddingAnimationDidEnd,
+          child: IconButton(
+            icon: AnimatedIcon(
+              icon: AnimatedIcons.menu_close,
+              progress: _animationController,
+            ),
+            color: Colors.white,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onPressed: _handlePress,
+          ),
+        ),
+      );
 
   @override
   void didUpdateWidget(MenuButtonWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     _isSelected = widget.isSelected;
-    _isSelected ? _animationController.forward() : _animationController.reverse();
+    _isSelected
+        ? _animationController.forward()
+        : _animationController.reverse();
   }
 
   @override

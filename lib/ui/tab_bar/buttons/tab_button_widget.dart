@@ -8,7 +8,7 @@ abstract class _Constants {
 
 class TabButtonWidget extends StatefulWidget {
   const TabButtonWidget({@required this.tab, this.onPressed})
-    :   assert(tab != null);
+      : assert(tab != null);
 
   final NavigationTab tab;
   final VoidCallback onPressed;
@@ -29,26 +29,25 @@ class _TabButtonWidgetState extends State<TabButtonWidget> {
 
   @override
   Widget build(BuildContext context) => AnimatedAlign(
-    duration: Duration(milliseconds: 150),
-    alignment: _alignment,
-    curve: Curves.easeInOut,
-    onEnd: _animationDidEnd,
-    child: Container(
-      margin: EdgeInsets.only(left: 25.0),
-      height: _Constants.size,
-      width: _Constants.size,
-      decoration: Decorations.buttonContainerDecoration(context).copyWith(
-        borderRadius: BorderRadius.circular(_Constants.size / 2)
-      ),
-      child: IconButton(
-        icon: widget.tab.icon,
-        color: Colors.white,
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-        onPressed: () => setState(() => _alignment = Alignment.topRight),
-      ),
-    ),
-  );
+        duration: Duration(milliseconds: 150),
+        alignment: _alignment,
+        curve: Curves.easeInOut,
+        onEnd: _animationDidEnd,
+        child: Container(
+          margin: EdgeInsets.only(left: 25.0),
+          height: _Constants.size,
+          width: _Constants.size,
+          decoration: Decorations.buttonContainerDecoration(context).copyWith(
+              borderRadius: BorderRadius.circular(_Constants.size / 2)),
+          child: IconButton(
+            icon: widget.tab.icon,
+            color: Colors.white,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            onPressed: () => setState(() => _alignment = Alignment.topRight),
+          ),
+        ),
+      );
 
   void _animationDidEnd() {
     if (_alignment == Alignment.bottomRight) {

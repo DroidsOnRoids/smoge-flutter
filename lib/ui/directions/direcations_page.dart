@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class MeasuringPointsPage extends StatelessWidget {
-  const MeasuringPointsPage();
+class DirectionsPage extends StatelessWidget {
+  const DirectionsPage();
 
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Text("Measuring points")],
+        children: <Widget>[Text("Find best route")],
       );
 }

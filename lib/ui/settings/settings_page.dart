@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage();
 
   @override
-  Widget build(BuildContext context) => Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      Text("Settings")
-    ],
-  );
+  Widget build(BuildContext context) => SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[Text("Settings")],
+        ),
+      );
 }
