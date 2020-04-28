@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:smoge/app/app_constants.dart';
 import 'package:smoge/ui/tab_bar/buttons/back_button_widget.dart';
 import 'package:smoge/ui/tab_bar/buttons/menu_button_widget.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
 import 'package:smoge/ui/tab_bar/buttons/tab_button_widget.dart';
-
-abstract class _Constants {
-  static const animationDuration = Duration(milliseconds: 300);
-}
 
 class TabBarWidget extends StatefulWidget {
   const TabBarWidget({this.onTabChange, this.onBackPressed});
@@ -38,11 +35,11 @@ class _TabBarWidgetState extends State<TabBarWidget> {
           alignment: AlignmentDirectional.bottomEnd,
           children: <Widget>[
             AnimatedPositionedDirectional(
-              duration: _Constants.animationDuration,
+              duration: AppConstants.animationDuration,
               end: _areButtonsVisible ? 75.0 : 65.0,
               height: 60.0,
               child: AnimatedOpacity(
-                duration: _Constants.animationDuration,
+                duration: AppConstants.animationDuration,
                 opacity: _areButtonsVisible ? 1.0 : 0.0,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -65,7 +62,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
               ),
             ),
             AnimatedPositionedDirectional(
-              duration: _Constants.animationDuration,
+              duration: AppConstants.animationDuration,
               start: _isBackButtonVisible ? 0.0 : -50.0,
               curve: Curves.easeInOut,
               child: BackButtonWidget(

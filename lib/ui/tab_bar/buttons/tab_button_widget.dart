@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
+import 'package:smoge/ui/common_widget/circular_icon_button.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
 import 'package:smoge/utils/decorations.dart';
-
-abstract class _Constants {
-  static const size = 45.0;
-}
 
 class TabButtonWidget extends StatefulWidget {
   const TabButtonWidget({@required this.tab, this.onPressed})
@@ -34,19 +30,10 @@ class _TabButtonWidgetState extends State<TabButtonWidget> {
         alignment: _alignment,
         curve: Curves.easeInOut,
         onEnd: _animationDidEnd,
-        child: Container(
-          margin: EdgeInsetsDirectional.only(start: 25.0),
-          height: _Constants.size,
-          width: _Constants.size,
-          decoration: Decorations.buttonContainerDecoration(context).copyWith(
-              borderRadius: BorderRadius.circular(_Constants.size / 2)),
-          child: IconButton(
-            icon: widget.tab.icon,
-            color: Colors.white,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            onPressed: () => setState(() => _alignment = AlignmentDirectional.topEnd),
-          ),
+        child: CircularIconButton(
+          margin: EdgeInsets.only(left: 25.0),
+          icon: widget.tab.icon,
+          onPressed: () => setState(() => _alignment = Alignment.topRight),
         ),
       );
 
