@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smoge/ui/home/home_page.dart';
 import 'package:smoge/ui/measuring_points/measuring_points_page.dart';
-import 'package:smoge/ui/directions/direcations_page.dart';
+import 'package:smoge/ui/directions/directions_page.dart';
 import 'package:smoge/ui/settings/settings_page.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
 import 'package:smoge/ui/tab_bar/tab_bar_widget.dart';
