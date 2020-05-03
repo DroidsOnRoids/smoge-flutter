@@ -9,12 +9,12 @@ abstract class ApiError {
   }
 }
 
-class FetchDataError extends ApiError {
-  FetchDataError([message = "Communication error"]) : super(message);
+class BadRequestError extends ApiError {
+  BadRequestError([message = "Bad request error"]) : super(message);
 }
 
-class BadRequestError extends ApiError {
-  BadRequestError([message = "Server error"]) : super(message);
+class ServerError extends ApiError {
+  ServerError([message = "Server error"]) : super(message);
 }
 
 class TimeoutError extends ApiError {
