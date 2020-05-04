@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smoge/utils/decorations.dart';
 
 abstract class _Constants {
   static const double height = 45.0;
@@ -8,11 +8,8 @@ abstract class _Constants {
 }
 
 class MenuButtonWidget extends StatefulWidget {
-  const MenuButtonWidget({
-    Key key,
-    this.onPressed,
-    this.isSelected = false
-  })  : assert(isSelected != null),
+  const MenuButtonWidget({Key key, this.onPressed, this.isSelected = false})
+      : assert(isSelected != null),
         super(key: key);
 
   final Function(bool) onPressed;
@@ -36,27 +33,16 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
     _rightPadding = 0.0;
     _animationController = AnimationController(
         duration: Duration(milliseconds: _Constants.animationDuration * 2),
-        vsync: this
-    );
+        vsync: this);
   }
 
   @override
-  Widget build(BuildContext context) =>
-      Container(
+  Widget build(BuildContext context) => Container(
         height: _Constants.height,
-        decoration: BoxDecoration(
-          color: Theme.of(context).buttonColor,
+        decoration: Decorations.buttonContainerDecoration(context).copyWith(
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(_Constants.cornerRadius),
-            bottomLeft: Radius.circular(_Constants.cornerRadius)
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).buttonColor.withAlpha(60),
-              blurRadius: 24.0,
-              offset: Offset(0, 15),
-            )
-          ]
+              topLeft: Radius.circular(_Constants.cornerRadius),
+              bottomLeft: Radius.circular(_Constants.cornerRadius)),
         ),
         child: AnimatedPadding(
           padding: EdgeInsets.only(right: _rightPadding),
@@ -81,7 +67,9 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
     super.didUpdateWidget(oldWidget);
 
     _isSelected = widget.isSelected;
-    _isSelected ? _animationController.forward() : _animationController.reverse();
+    _isSelected
+        ? _animationController.forward()
+        : _animationController.reverse();
   }
 
   @override
