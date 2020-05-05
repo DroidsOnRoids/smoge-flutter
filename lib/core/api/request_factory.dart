@@ -14,7 +14,7 @@ class RequestFactory {
 
   RequestFactory(this.baseUrl);
 
-  Future<Result<T>> getRequest<T>(String path) async {
+  Future<Result<dynamic>> getRequest(String path) async {
     final Future<http.Response> futureResponse = http.get(baseUrl + path);
 
     try {
@@ -23,22 +23,24 @@ class RequestFactory {
       switch (response.statusCode) {
         case 200:
           if (response.body.isEmpty) {
-            return Result<T>.error(EmptyResponseError());
+            return Result<dynamic>.error(EmptyResponseError());
+          } else {
+            return Result<dynamic>.value(json.decode(utf8.decode(response.bodyBytes)));
           }
-          return Result<T>.value(json.decode(utf8.decode(response.bodyBytes)));
+          break;
         case 400:
-          return Result<T>.error(BadRequestError());
+          return Result<dynamic>.error(BadRequestError());
         case 500:
-          return Result<T>.error(ServerError());
+          return Result<dynamic>.error(ServerError());
         default:
-          return Result<T>.error(UnknownError());
+          return Result<dynamic>.error(UnknownError());
       }
     } on TimeoutException {
-      return Result<T>.error(TimeoutError());
+      return Result<dynamic>.error(TimeoutError());
     } on SocketException {
-      return Result<T>.error(ConnectionError());
+      return Result<dynamic>.error(ConnectionError());
     } on Exception catch (error) {
-      return Result<T>.error(UnknownError('$error'));
+      return Result<dynamic>.error(UnknownError('$error'));
     }
   }
 }

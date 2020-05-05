@@ -17,7 +17,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'stSourceDataDate')
   final DateTime stationSourceDataDate;
 
-  //dwutlenek siarki
+  //sulphur dioxide
   @JsonKey(name: 'so2CalcDate')
   final DateTime so2CalcDate;
   @JsonKey(name: 'so2SourceDataDate')
@@ -25,7 +25,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'so2IndexLevel')
   final IndexLevel so2IndexLevel;
 
-  //dwutlenek azotu
+  //nitrogen dioxide
   @JsonKey(name: 'no2CalcDate')
   final int no2CalcDate;
   @JsonKey(name: 'no2SourceDataDate')
@@ -33,7 +33,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'no2IndexLevel')
   final IndexLevel no2IndexLevel;
 
-  //kobalt
+  //cobalt
   @JsonKey(name: 'coCalcDate')
   final DateTime coCalcDate;
   @JsonKey(name: 'coSourceDataDate')
@@ -41,7 +41,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'coIndexLevel')
   final IndexLevel coIndexLevel;
 
-  //pył zawieszony
+  //10 micrometer atmospheric particulate matter
   @JsonKey(name: 'pm10CalcDate')
   final DateTime pm10CalcDate;
   @JsonKey(name: 'pm10SourceDataDate')
@@ -49,7 +49,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'pm10IndexLevel')
   final IndexLevel pm10IndexLevel;
 
-  //aerozole atmosferyczne
+  //2,5 micrometer atmospheric particulate matter
   @JsonKey(name: 'pm25CalcDate')
   final DateTime pm25CalcDate;
   @JsonKey(name: 'pm25SourceDataDate')
@@ -57,7 +57,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'pm25IndexLevel')
   final IndexLevel pm25IndexLevel;
 
-  //ozon
+  //ozone
   @JsonKey(name: 'o3CalcDate')
   final DateTime o3CalcDate;
   @JsonKey(name: 'o3SourceDataDate')
@@ -65,7 +65,7 @@ class PollutionQualityIndex {
   @JsonKey(name: 'o3IndexLevel')
   final IndexLevel o3IndexLevel;
 
-  //benzen
+  //benzene
   @JsonKey(name: 'c6h6CalcDate')
   final DateTime c6h6CalcDate;
   @JsonKey(name: 'c6h6SourceDataDate')
