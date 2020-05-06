@@ -85,6 +85,7 @@ class ActivityWidget extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.body1,
             ),
           )
         ],

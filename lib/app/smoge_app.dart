@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smoge/app/app_theme.dart';
 import 'package:smoge/ui/home/home_page.dart';
 
 class SmogeApp extends StatelessWidget {
@@ -6,6 +7,7 @@ class SmogeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: HomePage(),
+      theme: AppThemeDataFactory.prepareThemeData() ,
     );
   }
 }

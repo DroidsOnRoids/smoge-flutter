@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
+import 'package:smoge/ui/home/widgets/video_player_widget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -14,9 +15,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+  Widget build(BuildContext context) => Stack(
+    children: <Widget>[
+      VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
+      SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -26,12 +28,13 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-    );
-  }
+    ],
+  );
 
   Widget _buildTitle() => Text(
         "Wroclaw",
         textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.subhead,
       );
 
   Widget _buildAirPollutionContent() => Column(
@@ -43,6 +46,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             "norm",
+            style: Theme.of(context).textTheme.subtitle,
           ),
         ],
       );
@@ -66,6 +70,7 @@ class _HomePageState extends State<HomePage> {
               opacity: 0.5,
               child: Text(
                 "Details",
+                style: Theme.of(context).textTheme.body1,
               ),
             ),
             SizedBox(height: 5),
