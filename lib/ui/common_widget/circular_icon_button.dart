@@ -3,8 +3,11 @@ import 'package:smoge/app/app_constants.dart';
 import 'package:smoge/utils/decorations.dart';
 
 class CircularIconButton extends StatelessWidget {
-  const CircularIconButton({@required this.icon, this.size = AppConstants.buttonSize, this.margin, this.onPressed})
-    : assert(icon != null);
+  const CircularIconButton({
+    @required this.icon,
+    this.size = AppConstants.buttonSize,
+    this.margin, this.onPressed
+  }) : assert(icon != null), assert(size != null);
 
   final Icon icon;
   final double size;
