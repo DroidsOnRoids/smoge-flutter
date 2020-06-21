@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
-import 'package:smoge/utils/strings.dart';
+import 'package:smoge/app/strings.dart';
 
 abstract class _Constants {
   static const double iconSize = 30;
