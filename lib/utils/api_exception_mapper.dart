@@ -1,18 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:smoge/app/strings.dart';
 import 'package:smoge/data/api/api_exception.dart';
 
 abstract class ApiExceptionMapper {
-  static String toErrorMessage(Object error, BuildContext context) {
+  static String toErrorMessage(Object error) {
     if (error is ApiException) {
-      if (error is UnauthorizedException) {
-        return Strings.authorizationError;
-      } else if (error is ConnectionException) {
+      if (error is ConnectionException) {
         return Strings.connectionError;
-      } else if (error is ResourceNotFoundException) {
-        return Strings.resourceNotFoundError;
+      } else if (error is ClientErrorException) {
+        return Strings.clientError;
       } else if (error is ServerErrorException) {
-        return Strings.internalServerError;
+        return Strings.serverError;
       } else {
         return Strings.unknownError;
       }

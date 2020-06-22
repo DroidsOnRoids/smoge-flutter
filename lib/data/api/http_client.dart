@@ -19,17 +19,15 @@ class HttpClient {
 
     try {
       response = await get(path);
-      switch (response.statusCode) {
-        case 200:
-          return jsonDecode(response.body);
-        case 401:
-          throw UnauthorizedException();
-        case 404:
-          throw ResourceNotFoundException();
-        case 500:
-          throw ServerErrorException();
-        default:
-          throw UnknownException();
+      final statusCode = response.statusCode;
+      if (statusCode == 200) {
+        return jsonDecode(response.body);
+      } else if (statusCode >= 400 && statusCode < 500) {
+        throw ClientErrorException();
+      } else if (statusCode >= 500 && statusCode < 600) {
+        throw ServerErrorException();
+      } else {
+        throw UnknownException();
       }
     } on SocketException {
       throw ConnectionException();

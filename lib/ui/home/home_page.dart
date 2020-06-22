@@ -57,7 +57,7 @@ class HomePageState extends State<HomePage> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return CircularProgressIndicator();
                     } else if (snapshot.hasError) {
-                      return Text(ApiExceptionMapper.toErrorMessage(snapshot.error, context));
+                      return Text(ApiExceptionMapper.toErrorMessage(snapshot.error));
                     } else {
                       final station = snapshot.data;
                       return Text('${station.stationName}');

@@ -1,9 +1,9 @@
 import 'package:smoge/data/api/http_client.dart';
+import 'package:smoge/data/api/pollution_repository.dart';
 import 'package:smoge/data/serialization/pollution_data.dart';
 import 'package:smoge/data/serialization/pollution_quality_index.dart';
 import 'package:smoge/data/serialization/pollution_sensor.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
-import 'package:smoge/data/api/pollution_repository.dart';
 
 class _Urls {
   static const baseUrl = "http://api.gios.gov.pl/pjp-api/rest/";
