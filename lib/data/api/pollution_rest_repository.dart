@@ -1,5 +1,5 @@
 import 'package:smoge/data/api/http_client.dart';
-import 'package:smoge/data/api/pollution_repository.dart';
+import 'package:smoge/domain/repository/pollution_repository.dart';
 import 'package:smoge/data/serialization/pollution_data.dart';
 import 'package:smoge/data/serialization/pollution_quality_index.dart';
 import 'package:smoge/data/serialization/pollution_sensor.dart';
@@ -40,7 +40,7 @@ class PollutionRestRepository extends PollutionRepository {
 
   @override
   Future<PollutionData> getSensorData(int sensorId) async {
-    Map<String, dynamic> sensorDataJson =
+    final Map<String, dynamic> sensorDataJson =
         await _httpClient.getRequest("${_Urls.sensorData}$sensorId");
 
     return PollutionData.fromJson(sensorDataJson);
@@ -48,7 +48,7 @@ class PollutionRestRepository extends PollutionRepository {
 
   @override
   Future<PollutionQualityIndex> getPollutionQualityIndex(int stationId) async {
-    Map<String, dynamic> pollutionQualityIndexJson =
+    final Map<String, dynamic> pollutionQualityIndexJson =
         await _httpClient.getRequest("${_Urls.stationPollutionQualityIndex}$stationId");
 
     return PollutionQualityIndex.fromJson(pollutionQualityIndexJson);
