@@ -1,12 +1,13 @@
+import 'package:smoge/data/api/api_exception.dart';
 import 'package:smoge/data/api/http_client.dart';
-import 'package:smoge/domain/repository/pollution_repository.dart';
 import 'package:smoge/data/serialization/pollution_data.dart';
 import 'package:smoge/data/serialization/pollution_quality_index.dart';
 import 'package:smoge/data/serialization/pollution_sensor.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
+import 'package:smoge/domain/repository/pollution_repository.dart';
 
 class _Urls {
-  static const baseUrl = "http://api.gios.gov.pl/pjp-api/rest/";
+  static const baseUrl = "https://api.gios.gov.pl/pjp-api/rest/";
   static const allStations = "${baseUrl}station/findAll";
   static const stationSensors = "${baseUrl}station/sensors/";
   static const sensorData = "${baseUrl}data/getData/";
@@ -19,6 +20,10 @@ class PollutionRestRepository extends PollutionRepository {
   @override
   Future<PollutionStation> getFirstStation() async {
     final List<dynamic> stationListJson = await _httpClient.getRequest(_Urls.allStations);
+
+    if (stationListJson.length < 1){
+      throw EmptyResultException();
+    }
 
     return PollutionStation.fromJson(stationListJson.first);
   }

@@ -21,7 +21,11 @@ class HttpClient {
       response = await get(path);
       final statusCode = response.statusCode;
       if (statusCode >= 200 && statusCode < 299) {
-        return jsonDecode(response.body);
+        if (statusCode == 204) {
+          throw EmptyResultException();
+        } else {
+          return jsonDecode(response.body);
+        }
       } else if (statusCode >= 400 && statusCode < 500) {
         throw ClientErrorException();
       } else if (statusCode >= 500 && statusCode < 600) {
