@@ -21,7 +21,7 @@ class PollutionRestRepository extends PollutionRepository {
   Future<PollutionStation> getFirstStation() async {
     final List<dynamic> stationListJson = await _httpClient.getRequest(_Urls.allStations);
 
-    if (stationListJson.length < 1){
+    if (stationListJson.isEmpty) {
       throw EmptyResultException();
     }
 
