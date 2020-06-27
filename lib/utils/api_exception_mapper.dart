@@ -10,6 +10,8 @@ abstract class ApiExceptionMapper {
         return Strings.clientError;
       } else if (error is ServerErrorException) {
         return Strings.serverError;
+      } else if (error is EmptyResultException) {
+        return Strings.emptyResultError;
       } else {
         return Strings.unknownError;
       }
