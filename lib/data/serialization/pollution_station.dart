@@ -27,6 +27,8 @@ class PollutionStation {
 
   factory PollutionStation.fromJson(Map<String, dynamic> json) => _$PollutionStationFromJson(json);
 
+  Map<String, dynamic> toJson(PollutionStation station) => _$PollutionStationToJson(station);
+
   @override
   String toString() {
     return 'stationId: $stationId\n'

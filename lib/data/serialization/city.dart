@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smoge/core/api/model/commune.dart';
+import 'package:smoge/data/serialization/commune.dart';
 
 part 'city.g.dart';
 

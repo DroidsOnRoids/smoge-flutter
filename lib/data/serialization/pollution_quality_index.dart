@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smoge/core/api/model/index_level.dart';
+import 'package:smoge/data/serialization/index_level.dart';
 
 part 'pollution_quality_index.g.dart';
 

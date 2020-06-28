@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:smoge/core/api/model/pollution_value.dart';
+import 'package:smoge/data/serialization/pollution_value.dart';
 
 part 'pollution_data.g.dart';
 
