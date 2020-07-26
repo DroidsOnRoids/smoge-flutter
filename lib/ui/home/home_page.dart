@@ -1,11 +1,11 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/app/strings.dart';
-import 'package:smoge/data/api/pollution_rest_repository.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
-import 'package:smoge/domain/repository/pollution_repository.dart';
+import 'package:smoge/domain/provider/pollution/pollution_provider_model.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
@@ -18,20 +18,23 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  final PollutionRepository _pollutionRepository = PollutionRestRepository();
-
   @override
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
           VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
           SafeArea(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                _buildTitle(),
-                _buildExpandedContent(),
-                _buildActivitiesWidget(),
-              ],
+            child: ChangeNotifierProvider<PollutionProviderModel>(
+              create: (BuildContext context) => PollutionProviderModel.build(),
+              child: Builder(
+                builder: (BuildContext context) => Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    _buildTitle(),
+                    _buildExpandedContent(context),
+                    _buildActivitiesWidget(),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
@@ -43,36 +46,43 @@ class HomePageState extends State<HomePage> {
         textAlign: TextAlign.center,
       );
 
-  Widget _buildExpandedContent() => Expanded(
-        child: Column(
-          children: <Widget>[
-            Expanded(child: Container()),
-            GestureDetector(
-              onTap: () {
-                setState(() {});
+  Widget _buildExpandedContent(BuildContext context) {
+    Provider.of<PollutionProviderModel>(context).getFirstStation();
+
+    return Expanded(
+      child: Column(
+        children: <Widget>[
+          Expanded(child: Container()),
+          GestureDetector(
+            onTap: () {
+              setState(() {});
+            },
+            child: Consumer<PollutionProviderModel>(
+              builder: (BuildContext context, PollutionProviderModel model,
+                  Widget child) {
+                if (model.error != null) {
+                  return Text(ApiExceptionMapper.toErrorMessage(model.error));
+                } else if (model.value != null) {
+                  final PollutionStation station = model.value.firstStation;
+
+                  return Text('${station.stationName}');
+                } else {
+                  return CircularProgressIndicator();
+                }
               },
-              child: FutureBuilder<PollutionStation>(
-                  future: _pollutionRepository.getFirstStation(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return CircularProgressIndicator();
-                    } else if (snapshot.hasError) {
-                      return Text(ApiExceptionMapper.toErrorMessage(snapshot.error));
-                    } else {
-                      final station = snapshot.data;
-                      return Text('${station.stationName}');
-                    }
-                  }),
             ),
-            AnimatedPercentageWidget(
-              fromValue: 0,
-              toValue: 310,
-            ),
-            Text(Strings.airQualityNorm, style: Theme.of(context).textTheme.subtitle),
-            _buildDetailsWidget(),
-          ],
-        ),
-      );
+          ),
+          AnimatedPercentageWidget(
+            fromValue: 0,
+            toValue: 310,
+          ),
+          Text(Strings.airQualityNorm,
+              style: Theme.of(context).textTheme.subtitle),
+          _buildDetailsWidget(),
+        ],
+      ),
+    );
+  }
 
   Widget _buildDetailsWidget() => Expanded(
         child: Column(

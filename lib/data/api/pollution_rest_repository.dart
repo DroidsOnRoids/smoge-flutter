@@ -14,7 +14,7 @@ class _Urls {
   static const stationPollutionQualityIndex = "${baseUrl}aqindex/getIndex/";
 }
 
-class PollutionRestRepository extends PollutionRepository {
+class PollutionRestRepository implements PollutionRepository {
   final HttpClient _httpClient = HttpClient();
 
   @override
