@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smoge/domain/provider/pollution/pollution_provider_model.dart';
+import 'package:smoge/domain/provider/provider_widget.dart';
+import 'package:smoge/ui/directions/directions_page.dart';
 import 'package:smoge/ui/home/home_page.dart';
 import 'package:smoge/ui/measuring_points/measuring_points_page.dart';
-import 'package:smoge/ui/directions/directions_page.dart';
 import 'package:smoge/ui/settings/settings_page.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
 import 'package:smoge/ui/tab_bar/tab_bar_widget.dart';
@@ -17,7 +19,8 @@ class NavigationContainer extends StatefulWidget {
 class _NavigationContainerState extends State<NavigationContainer>
     with SingleTickerProviderStateMixin {
   final Map<NavigationTab, Widget> _pages = {
-    NavigationTab.home: HomePage(),
+    NavigationTab.home: ProviderWidget<PollutionProviderModel>(
+        HomePage(), (BuildContext context) => PollutionProviderModel.build()),
     NavigationTab.measuringPoints: MeasuringPointsPage(),
     NavigationTab.directions: DirectionsPage(),
     NavigationTab.settings: SettingsPage()
@@ -27,16 +30,13 @@ class _NavigationContainerState extends State<NavigationContainer>
   Animation<double> _animation;
   AnimationController _controller;
 
-
   @override
   void initState() {
     super.initState();
 
     _selectedTab = NavigationTab.home;
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 1000),
-      vsync: this
-    );
+        duration: const Duration(milliseconds: 1000), vsync: this);
     _animation = Tween(
       begin: 0.0,
       end: 1.0,
@@ -52,10 +52,7 @@ class _NavigationContainerState extends State<NavigationContainer>
           onTabChange: _tabDidChange,
           onBackPressed: _backDidTap,
         ),
-        body: FadeTransition(
-          opacity: _animation,
-          child: _pages[_selectedTab]
-        ),
+        body: FadeTransition(opacity: _animation, child: _pages[_selectedTab]),
       );
 
   @override

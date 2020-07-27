@@ -6,6 +6,7 @@ import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/app/strings.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
 import 'package:smoge/domain/provider/pollution/pollution_provider_model.dart';
+import 'package:smoge/domain/provider/provider_model_state.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
@@ -23,18 +24,13 @@ class HomePageState extends State<HomePage> {
         children: <Widget>[
           VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
           SafeArea(
-            child: ChangeNotifierProvider<PollutionProviderModel>(
-              create: (BuildContext context) => PollutionProviderModel.build(),
-              child: Builder(
-                builder: (BuildContext context) => Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    _buildTitle(),
-                    _buildExpandedContent(context),
-                    _buildActivitiesWidget(),
-                  ],
-                ),
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _buildTitle(),
+                _buildExpandedContent(context),
+                _buildActivitiesWidget(),
+              ],
             ),
           ),
         ],
@@ -60,14 +56,21 @@ class HomePageState extends State<HomePage> {
             child: Consumer<PollutionProviderModel>(
               builder: (BuildContext context, PollutionProviderModel model,
                   Widget child) {
-                if (model.error != null) {
-                  return Text(ApiExceptionMapper.toErrorMessage(model.error));
-                } else if (model.value != null) {
-                  final PollutionStation station = model.value.firstStation;
+                switch (model.state) {
+                  case ProviderModelState.none:
+                    return CircularProgressIndicator();
+                    break;
+                  case ProviderModelState.value:
+                    final PollutionStation station = model.value.firstStation;
 
-                  return Text('${station.stationName}');
-                } else {
-                  return CircularProgressIndicator();
+                    return Text('${station.stationName}');
+                    break;
+                  case ProviderModelState.error:
+                    return Text(ApiExceptionMapper.toErrorMessage(model.error));
+                    break;
+                  default:
+                    return CircularProgressIndicator();
+                    break;
                 }
               },
             ),
