@@ -1,3 +1,4 @@
+import 'package:async/async.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:smoge/data/api/pollution_rest_repository.dart';
 import 'package:smoge/data/serialization/pollution_data.dart';
@@ -9,10 +10,11 @@ import 'package:smoge/domain/provider/provider_model.dart';
 import 'package:smoge/domain/repository/pollution_repository.dart';
 
 class PollutionProviderModel
-    extends ProviderModel<PollutionProviderModelState, Exception> {
+    extends ProviderModel<PollutionProviderModelState> {
   PollutionProviderModel({@required PollutionRepository pollutionRepository})
       : assert(pollutionRepository != null),
-        _pollutionRepository = pollutionRepository;
+        _pollutionRepository = pollutionRepository,
+        super(PollutionProviderModelState());
 
   factory PollutionProviderModel.build() =>
       PollutionProviderModel(pollutionRepository: PollutionRestRepository());
@@ -23,54 +25,49 @@ class PollutionProviderModel
     PollutionStation firstStation =
         await _pollutionRepository.getFirstStation();
 
-    final PollutionProviderModelState _value = value ?? PollutionProviderModelState();
-
-    _value.firstStation = firstStation;
-
-    pushNextValue(_value);
+    value.firstStation.set(
+        Future<Result<PollutionStation>>.value(
+            Result<PollutionStation>.value(firstStation)),
+        notifyListeners);
   }
 
   Future<void> getAllStations() async {
     List<PollutionStation> allPollutionStations =
         await _pollutionRepository.getAllStations();
 
-    final PollutionProviderModelState _value = value ?? PollutionProviderModelState();
-
-    _value.allPollutionStations = allPollutionStations;
-
-    pushNextValue(_value);
+    value.allPollutionStations.set(
+        Future<Result<List<PollutionStation>>>.value(
+            Result<List<PollutionStation>>.value(allPollutionStations)),
+        notifyListeners);
   }
 
   Future<void> getSensors(int stationId) async {
     List<PollutionSensor> sensors =
         await _pollutionRepository.getSensors(stationId);
 
-    final PollutionProviderModelState _value = value ?? PollutionProviderModelState();
-
-    _value.sensors = sensors;
-
-    pushNextValue(_value);
+    value.sensors.set(
+        Future<Result<List<PollutionSensor>>>.value(
+            Result<List<PollutionSensor>>.value(sensors)),
+        notifyListeners);
   }
 
   Future<void> getSensorData(int sensorId) async {
     PollutionData pollutionData =
         await _pollutionRepository.getSensorData(sensorId);
 
-    final PollutionProviderModelState _value = value ?? PollutionProviderModelState();
-
-    _value.pollutionData = pollutionData;
-
-    pushNextValue(_value);
+    value.pollutionData.set(
+        Future<Result<PollutionData>>.value(
+            Result<PollutionData>.value(pollutionData)),
+        notifyListeners);
   }
 
   Future<void> getPollutionQualityIndex(int stationId) async {
     PollutionQualityIndex pollutionQualityIndex =
         await _pollutionRepository.getPollutionQualityIndex(stationId);
 
-    final PollutionProviderModelState _value = value ?? PollutionProviderModelState();
-
-    _value.pollutionQualityIndex = pollutionQualityIndex;
-
-    pushNextValue(_value);
+    value.pollutionQualityIndex.set(
+        Future<Result<PollutionQualityIndex>>.value(
+            Result<PollutionQualityIndex>.value(pollutionQualityIndex)),
+        notifyListeners);
   }
 }

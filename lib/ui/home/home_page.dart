@@ -6,7 +6,7 @@ import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/app/strings.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
 import 'package:smoge/domain/provider/pollution/pollution_provider_model.dart';
-import 'package:smoge/domain/provider/provider_model_state.dart';
+import 'package:smoge/domain/provider/provider_model_async_result.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
@@ -19,6 +19,13 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  @override
+  void didChangeDependencies() {
+    Provider.of<PollutionProviderModel>(context).getFirstStation();
+
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
@@ -42,49 +49,42 @@ class HomePageState extends State<HomePage> {
         textAlign: TextAlign.center,
       );
 
-  Widget _buildExpandedContent(BuildContext context) {
-    Provider.of<PollutionProviderModel>(context).getFirstStation();
-
-    return Expanded(
-      child: Column(
-        children: <Widget>[
-          Expanded(child: Container()),
-          GestureDetector(
-            onTap: () {
-              setState(() {});
-            },
-            child: Consumer<PollutionProviderModel>(
-              builder: (BuildContext context, PollutionProviderModel model,
-                  Widget child) {
-                switch (model.state) {
-                  case ProviderModelState.none:
-                    return CircularProgressIndicator();
-                    break;
-                  case ProviderModelState.value:
-                    final PollutionStation station = model.value.firstStation;
-
-                    return Text('${station.stationName}');
-                    break;
-                  case ProviderModelState.error:
-                    return Text(ApiExceptionMapper.toErrorMessage(model.error));
-                    break;
-                  default:
-                    return CircularProgressIndicator();
-                    break;
-                }
-              },
+  Widget _buildExpandedContent(BuildContext context) => Expanded(
+        child: Column(
+          children: <Widget>[
+            Expanded(child: Container()),
+            GestureDetector(
+                onTap: () {
+                  setState(() {});
+                },
+                child: _buildStationName()),
+            AnimatedPercentageWidget(
+              fromValue: 0,
+              toValue: 310,
             ),
-          ),
-          AnimatedPercentageWidget(
-            fromValue: 0,
-            toValue: 310,
-          ),
-          Text(Strings.airQualityNorm,
-              style: Theme.of(context).textTheme.subtitle),
-          _buildDetailsWidget(),
-        ],
-      ),
-    );
+            Text(Strings.airQualityNorm,
+                style: Theme.of(context).textTheme.subtitle),
+            _buildDetailsWidget(),
+          ],
+        ),
+      );
+
+  Widget _buildStationName() {
+    ProviderModelAsyncResult<PollutionStation, Exception> firstStation = context
+        .select((PollutionProviderModel model) => model.value.firstStation);
+
+    if (firstStation.hasData) {
+      if (!firstStation.isLoading) {
+        if (firstStation.result.isValue) {
+          return Text('${firstStation.result.asValue.value.stationName}');
+        } else if (firstStation.result.isError) {
+          return Text(ApiExceptionMapper.toErrorMessage(
+              firstStation.result.asError.error));
+        }
+      }
+    }
+
+    return CircularProgressIndicator();
   }
 
   Widget _buildDetailsWidget() => Expanded(
