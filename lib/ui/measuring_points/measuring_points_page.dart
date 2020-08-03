@@ -6,6 +6,6 @@ class MeasuringPointsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Text("Measuring points")],
+        children: <Widget>[Text('Measuring points')],
       );
 }

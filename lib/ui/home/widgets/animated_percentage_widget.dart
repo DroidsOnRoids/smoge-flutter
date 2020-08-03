@@ -56,5 +56,5 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
 
   @override
   Widget build(BuildContext context) =>
-      Text("$_number%", style: Theme.of(context).textTheme.title);
+      Text('$_number%', style: Theme.of(context).textTheme.headline6);
 }

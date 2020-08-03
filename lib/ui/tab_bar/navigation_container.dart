@@ -36,7 +36,7 @@ class _NavigationContainerState extends State<NavigationContainer>
 
     _selectedTab = NavigationTab.home;
     _controller = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
+        duration: const Duration(seconds: 1), vsync: this);
     _animation = Tween(
       begin: 0.0,
       end: 1.0,

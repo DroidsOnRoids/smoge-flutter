@@ -22,50 +22,46 @@ class PollutionProviderModel
   final PollutionRepository _pollutionRepository;
 
   Future<void> getFirstStation() async {
-    PollutionStation firstStation =
-        await _pollutionRepository.getFirstStation();
+    final firstStation = await _pollutionRepository.getFirstStation();
 
-    value.firstStation.set(
+    await value.firstStation.set(
         Future<Result<PollutionStation>>.value(
             Result<PollutionStation>.value(firstStation)),
         notifyListeners);
   }
 
   Future<void> getAllStations() async {
-    List<PollutionStation> allPollutionStations =
-        await _pollutionRepository.getAllStations();
+    final allPollutionStations = await _pollutionRepository.getAllStations();
 
-    value.allPollutionStations.set(
+    await value.allPollutionStations.set(
         Future<Result<List<PollutionStation>>>.value(
             Result<List<PollutionStation>>.value(allPollutionStations)),
         notifyListeners);
   }
 
   Future<void> getSensors(int stationId) async {
-    List<PollutionSensor> sensors =
-        await _pollutionRepository.getSensors(stationId);
+    final sensors = await _pollutionRepository.getSensors(stationId);
 
-    value.sensors.set(
+    await value.sensors.set(
         Future<Result<List<PollutionSensor>>>.value(
             Result<List<PollutionSensor>>.value(sensors)),
         notifyListeners);
   }
 
   Future<void> getSensorData(int sensorId) async {
-    PollutionData pollutionData =
-        await _pollutionRepository.getSensorData(sensorId);
+    final pollutionData = await _pollutionRepository.getSensorData(sensorId);
 
-    value.pollutionData.set(
+    await value.pollutionData.set(
         Future<Result<PollutionData>>.value(
             Result<PollutionData>.value(pollutionData)),
         notifyListeners);
   }
 
   Future<void> getPollutionQualityIndex(int stationId) async {
-    PollutionQualityIndex pollutionQualityIndex =
+    final pollutionQualityIndex =
         await _pollutionRepository.getPollutionQualityIndex(stationId);
 
-    value.pollutionQualityIndex.set(
+    await value.pollutionQualityIndex.set(
         Future<Result<PollutionQualityIndex>>.value(
             Result<PollutionQualityIndex>.value(pollutionQualityIndex)),
         notifyListeners);

@@ -6,6 +6,6 @@ class DirectionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Text("Find best route")],
+        children: <Widget>[Text('Find best route')],
       );
 }

@@ -7,11 +7,11 @@ import 'package:smoge/data/serialization/pollution_station.dart';
 import 'package:smoge/domain/repository/pollution_repository.dart';
 
 class _Urls {
-  static const baseUrl = "https://api.gios.gov.pl/pjp-api/rest/";
-  static const allStations = "${baseUrl}station/findAll";
-  static const stationSensors = "${baseUrl}station/sensors/";
-  static const sensorData = "${baseUrl}data/getData/";
-  static const stationPollutionQualityIndex = "${baseUrl}aqindex/getIndex/";
+  static const baseUrl = 'https://api.gios.gov.pl/pjp-api/rest/';
+  static const allStations = '${baseUrl}station/findAll';
+  static const stationSensors = '${baseUrl}station/sensors/';
+  static const sensorData = '${baseUrl}data/getData/';
+  static const stationPollutionQualityIndex = '${baseUrl}aqindex/getIndex/';
 }
 
 class PollutionRestRepository implements PollutionRepository {
@@ -19,43 +19,52 @@ class PollutionRestRepository implements PollutionRepository {
 
   @override
   Future<PollutionStation> getFirstStation() async {
-    final List<dynamic> stationListJson = await _httpClient.getRequest(_Urls.allStations);
+    final stationListJson =
+        (await _httpClient.getRequest(_Urls.allStations)) as List;
 
     if (stationListJson.isEmpty) {
       throw EmptyResultException();
     }
 
-    return PollutionStation.fromJson(stationListJson.first);
+    return PollutionStation.fromJson(
+        stationListJson.first as Map<String, dynamic>);
   }
 
   @override
   Future<List<PollutionStation>> getAllStations() async {
-    final List<dynamic> stationListJson = await _httpClient.getRequest(_Urls.allStations);
+    final stationListJson = await _httpClient.getRequest(_Urls.allStations);
 
-    return stationListJson.map((stationJson) => PollutionStation.fromJson(stationJson)).toList();
+    return (stationListJson as List)
+        .map((stationJson) =>
+            PollutionStation.fromJson(stationJson as Map<String, dynamic>))
+        .toList();
   }
 
   @override
   Future<List<PollutionSensor>> getSensors(int stationId) async {
-    final List<dynamic> sensorListJson =
-        await _httpClient.getRequest("${_Urls.stationSensors}$stationId");
+    final sensorListJson =
+        await _httpClient.getRequest('${_Urls.stationSensors}$stationId');
 
-    return sensorListJson.map((stationJson) => PollutionSensor.fromJson(stationJson)).toList();
+    return (sensorListJson as List)
+        .map((stationJson) =>
+            PollutionSensor.fromJson(stationJson as Map<String, dynamic>))
+        .toList();
   }
 
   @override
   Future<PollutionData> getSensorData(int sensorId) async {
-    final Map<String, dynamic> sensorDataJson =
-        await _httpClient.getRequest("${_Urls.sensorData}$sensorId");
+    final sensorDataJson =
+        await _httpClient.getRequest('${_Urls.sensorData}$sensorId');
 
-    return PollutionData.fromJson(sensorDataJson);
+    return PollutionData.fromJson(sensorDataJson as Map<String, dynamic>);
   }
 
   @override
   Future<PollutionQualityIndex> getPollutionQualityIndex(int stationId) async {
-    final Map<String, dynamic> pollutionQualityIndexJson =
-        await _httpClient.getRequest("${_Urls.stationPollutionQualityIndex}$stationId");
+    final pollutionQualityIndexJson = await _httpClient
+        .getRequest('${_Urls.stationPollutionQualityIndex}$stationId');
 
-    return PollutionQualityIndex.fromJson(pollutionQualityIndexJson);
+    return PollutionQualityIndex.fromJson(
+        pollutionQualityIndexJson as Map<String, dynamic>);
   }
 }

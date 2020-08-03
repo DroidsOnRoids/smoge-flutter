@@ -22,7 +22,7 @@ class HttpClient {
       final statusCode = response.statusCode;
       if (statusCode >= 200 && statusCode < 299) {
         if (response.body.isEmpty) {
-          return List<dynamic>();
+          return <dynamic>[];
         } else {
           return jsonDecode(response.body);
         }

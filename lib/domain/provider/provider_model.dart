@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ProviderModel<T> extends ChangeNotifier {
-  ProviderModel(this._initialValue);
+  ProviderModel(T initialValue) : _value = initialValue;
 
-  T get value => _value ?? _initialValue;
-
-  final T _initialValue;
-  T _value;
+  T get value => _value;
+  final T _value;
 }

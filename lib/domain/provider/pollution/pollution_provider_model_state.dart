@@ -5,16 +5,11 @@ import 'package:smoge/data/serialization/pollution_station.dart';
 import 'package:smoge/domain/provider/provider_model_async_result.dart';
 
 class PollutionProviderModelState {
-  ProviderModelAsyncResult<PollutionStation, Exception> firstStation =
-      ProviderModelAsyncResult<PollutionStation, Exception>();
-  ProviderModelAsyncResult<List<PollutionStation>, Exception>
-      allPollutionStations =
+  final firstStation = ProviderModelAsyncResult<PollutionStation, Exception>();
+  final allPollutionStations =
       ProviderModelAsyncResult<List<PollutionStation>, Exception>();
-  ProviderModelAsyncResult<List<PollutionSensor>, Exception> sensors =
-      ProviderModelAsyncResult<List<PollutionSensor>, Exception>();
-  ProviderModelAsyncResult<PollutionData, Exception> pollutionData =
-      ProviderModelAsyncResult<PollutionData, Exception>();
-  ProviderModelAsyncResult<PollutionQualityIndex, Exception>
-      pollutionQualityIndex =
+  final sensors = ProviderModelAsyncResult<List<PollutionSensor>, Exception>();
+  final pollutionData = ProviderModelAsyncResult<PollutionData, Exception>();
+  final pollutionQualityIndex =
       ProviderModelAsyncResult<PollutionQualityIndex, Exception>();
 }

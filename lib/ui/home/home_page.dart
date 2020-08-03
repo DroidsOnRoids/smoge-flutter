@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/app/strings.dart';
-import 'package:smoge/data/serialization/pollution_station.dart';
 import 'package:smoge/domain/provider/pollution/pollution_provider_model.dart';
-import 'package:smoge/domain/provider/provider_model_async_result.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 import 'package:smoge/ui/home/widgets/animated_percentage_widget.dart';
@@ -29,7 +27,7 @@ class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) => Stack(
         children: <Widget>[
-          VideoPlayerWidget(videoPath: "assets/videos/fog.mp4"),
+          VideoPlayerWidget(videoPath: 'assets/videos/fog.mp4'),
           SafeArea(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -45,7 +43,7 @@ class HomePageState extends State<HomePage> {
 
   Widget _buildTitle() => Text(
         Strings.exampleCityName,
-        style: Theme.of(context).textTheme.subhead,
+        style: Theme.of(context).textTheme.subtitle1,
         textAlign: TextAlign.center,
       );
 
@@ -63,28 +61,28 @@ class HomePageState extends State<HomePage> {
               toValue: 310,
             ),
             Text(Strings.airQualityNorm,
-                style: Theme.of(context).textTheme.subtitle),
+                style: Theme.of(context).textTheme.subtitle2),
             _buildDetailsWidget(),
           ],
         ),
       );
 
   Widget _buildStationName() {
-    ProviderModelAsyncResult<PollutionStation, Exception> firstStation = context
+    final firstStation = context
         .select((PollutionProviderModel model) => model.value.firstStation);
 
-    if (firstStation.hasData) {
-      if (!firstStation.isLoading) {
-        if (firstStation.result.isValue) {
-          return Text('${firstStation.result.asValue.value.stationName}');
-        } else if (firstStation.result.isError) {
-          return Text(ApiExceptionMapper.toErrorMessage(
-              firstStation.result.asError.error));
-        }
-      }
+    if (!firstStation.hasData || firstStation.isLoading) {
+      return CircularProgressIndicator();
     }
 
-    return CircularProgressIndicator();
+    if (firstStation.result.isValue) {
+      return Text('${firstStation.result.asValue.value.stationName}');
+    } else if (firstStation.result.isError) {
+      return Text(
+          ApiExceptionMapper.toErrorMessage(firstStation.result.asError.error));
+    } else {
+      return CircularProgressIndicator();
+    }
   }
 
   Widget _buildDetailsWidget() => Expanded(

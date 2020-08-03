@@ -14,8 +14,8 @@ class ProviderModelAsyncResult<T, Y extends Exception> {
     isLoadingChanged();
   }
 
-  bool get hasData => isLoading != null || result != null;
+  bool get hasData => !isLoading || result != null;
 
   Result<T> result;
-  bool isLoading;
+  bool isLoading = false;
 }

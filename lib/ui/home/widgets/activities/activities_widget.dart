@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:smoge/ui/home/widgets/activities/activity_widget.dart';
 
 abstract class _Constants {
-  static const double iconSize = 30;
   static const double itemSpacing = 20;
   static const double badgeSize = 15;
 }
@@ -28,7 +27,7 @@ class ActivitiesWidget extends StatelessWidget {
       );
 
   List<Widget> _buildActivities() {
-    List<Widget> widgets = [SizedBox(width: _Constants.itemSpacing)];
+    var widgets = <Widget>[SizedBox(width: _Constants.itemSpacing)];
 
     activities.forEach((activityType, activityQuality) {
       widgets
