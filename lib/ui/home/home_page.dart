@@ -71,7 +71,7 @@ class HomePageState extends State<HomePage> {
     final firstStation = context
         .select((PollutionProviderModel model) => model.value.firstStation);
 
-    if (!firstStation.hasData || firstStation.isLoading) {
+    if (!firstStation.hasData) {
       return CircularProgressIndicator();
     }
 

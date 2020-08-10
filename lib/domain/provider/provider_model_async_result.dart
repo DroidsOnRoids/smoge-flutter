@@ -1,13 +1,11 @@
 import 'dart:ui';
 
 import 'package:async/async.dart';
-import 'package:smoge/domain/error/smoge_error.dart';
 
-class ProviderModelAsyncResult<T, Y extends SmogeError> {
+class ProviderModelAsyncResult<T> {
   Future<void> set(
       Future<Result<T>> futureResult, VoidCallback isLoadingChanged) async {
     isLoading = true;
-    isLoadingChanged();
 
     result = await futureResult;
 
