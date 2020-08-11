@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class Decorations {
-  static buttonContainerDecoration(BuildContext context) => BoxDecoration(
+  static BoxDecoration buttonContainerDecoration(BuildContext context) => BoxDecoration(
         color: Theme.of(context).buttonColor,
         boxShadow: [
           BoxShadow(

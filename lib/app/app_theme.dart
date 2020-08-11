@@ -8,24 +8,24 @@ class AppThemeDataFactory {
         accentColor: AppColors.textPrimary,
         backgroundColor: AppColors.background,
         buttonColor: AppColors.buttonColor,
-        fontFamily: "Roboto",
+        fontFamily: 'Roboto',
         textTheme: TextTheme(
-          title: TextStyle(
+          headline6: TextStyle(
             fontSize: 72,
             fontWeight: FontWeight.w500,
             color: AppColors.textPrimary,
           ),
-          subtitle: TextStyle(
+          subtitle2: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
-          subhead: TextStyle(
+          subtitle1: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w600,
             color: AppColors.textPrimary,
           ),
-          body1: TextStyle(
+          bodyText2: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: AppColors.textPrimary,

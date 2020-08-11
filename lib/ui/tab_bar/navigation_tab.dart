@@ -15,6 +15,6 @@ extension NavigationTabsIcons on NavigationTab {
         return Icon(Icons.directions);
     }
 
-    throw Exception("NavigationTab.icon - Unsatisfied switch cases");
+    throw Exception('NavigationTab.icon - Unsatisfied switch cases');
   }
 }

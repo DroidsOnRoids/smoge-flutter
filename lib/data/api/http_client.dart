@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:async/async.dart';
 import 'package:http/http.dart';
 import 'package:smoge/data/api/api_exception.dart';
 
@@ -14,7 +15,7 @@ class HttpClient {
     return _instance;
   }
 
-  Future<dynamic> getRequest(String path) async {
+  Future<Result<dynamic>> getRequest(String path) async {
     Response response;
 
     try {
@@ -22,19 +23,19 @@ class HttpClient {
       final statusCode = response.statusCode;
       if (statusCode >= 200 && statusCode < 299) {
         if (response.body.isEmpty) {
-          return List<dynamic>();
+          return Result<dynamic>.value(null);
         } else {
-          return jsonDecode(response.body);
+          return Result<dynamic>.value(jsonDecode(response.body));
         }
       } else if (statusCode >= 400 && statusCode < 500) {
-        throw ClientErrorException();
+        return Result<dynamic>.error(ClientErrorException());
       } else if (statusCode >= 500 && statusCode < 600) {
-        throw ServerErrorException();
+        return Result<dynamic>.error(ServerErrorException());
       } else {
-        throw UnknownException();
+        return Result<dynamic>.error(UnknownException());
       }
     } on SocketException {
-      throw ConnectionException();
+      return Result<dynamic>.error(ConnectionException());
     }
   }
 }
