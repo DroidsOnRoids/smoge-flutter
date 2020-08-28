@@ -17,9 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  Future<void> _firstStationInitialState;
+
   @override
   void didChangeDependencies() {
-    Provider.of<PollutionProviderModel>(context).getFirstStation();
+    _firstStationInitialState ??=
+        Provider.of<PollutionProviderModel>(context).getFirstStation();
 
     super.didChangeDependencies();
   }
