@@ -1,0 +1,51 @@
+{
+  "@@locale": "en",
+  "activityWalking": "Walking",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "activityRunning": "Running",
+  "@activityRunning": {
+    "description": ""
+  },
+  "activityBiking": "Biking",
+  "@activityBiking": {
+    "description": ""
+  },
+  "exampleCityName": "Wroclaw",
+  "@exampleCityName": {
+    "description": ""
+  },
+  "airQualityNorm": "norm",
+  "@airQualityNorm": {
+    "description": ""
+  },
+  "details": "Details",
+  "@details": {
+    "description": ""
+  },
+  "connectionError": "No internet connection",
+  "@connectionError": {
+    "description": ""
+  },
+  "clientError": "Resource not found",
+  "@clientError": {
+    "description": ""
+  },
+  "serverError": "Internal server error",
+  "@serverError": {
+    "description": ""
+  },
+  "unknownError": "Unknown error",
+  "@unknownError": {
+    "description": ""
+  },
+  "emptyResultError": "Request body was empty",
+  "@emptyResultError": {
+    "description": ""
+  },
+  "measuringPoints": "Measuring points",
+  "@measuringPoints": {
+    "description": ""
+  }
+}
