@@ -47,5 +47,17 @@
   "measuringPoints": "Measuring points",
   "@measuringPoints": {
     "description": ""
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": ""
+  },
+  "findBestRoute": "Find best route",
+  "@findBestRoute": {
+    "description": ""
+  },
+  "percentage": "{value}%",
+  "@percentage": {
+    "description": ""
   }
 }

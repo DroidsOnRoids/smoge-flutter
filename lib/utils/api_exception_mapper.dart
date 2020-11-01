@@ -1,8 +1,9 @@
-import 'package:smoge/app/S.of(context).dart';
+import 'package:flutter/cupertino.dart';
 import 'package:smoge/data/api/api_exception.dart';
+import 'package:smoge/generated/l10n.dart';
 
 abstract class ApiExceptionMapper {
-  static String toErrorMessage(Object error) {
+  static String toErrorMessage(BuildContext context, Object error) {
     if (error is ApiException) {
       if (error is ConnectionException) {
         return S.of(context).connectionError;

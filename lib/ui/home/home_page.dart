@@ -79,7 +79,7 @@ class HomePageState extends State<HomePage> {
     }
 
     if (firstStation.result.isValue) {
-      return Text('${firstStation.result.asValue.value.stationName}');
+      return Text(firstStation.result.asValue.value.stationName);
     } else if (firstStation.result.isError) {
       return Text((firstStation.result.asError.error as SmogeError).title);
     } else {
