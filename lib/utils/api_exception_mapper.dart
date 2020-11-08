@@ -7,11 +7,10 @@ abstract class ApiExceptionMapper {
     if (error is ApiException) {
       if (error is ConnectionException) {
         return Strings.of(context).connectionError;
-      } else {
-        return Strings.of(context).serverError;
+      } else if (error is UnsuccessfulResponseException) {
+        return Strings.of(context).unsuccessfulResponseError;
       }
-    } else {
-      return Strings.of(context).unknownError;
     }
+    return Strings.of(context).unknownError;
   }
 }

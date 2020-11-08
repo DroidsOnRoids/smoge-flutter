@@ -4,7 +4,7 @@ import 'package:smoge/data/serialization/pollution_data.dart';
 import 'package:smoge/data/serialization/pollution_quality_index.dart';
 import 'package:smoge/data/serialization/pollution_sensor.dart';
 import 'package:smoge/data/serialization/pollution_station.dart';
-import 'package:smoge/domain/error/home_page_errors.dart';
+import 'package:smoge/domain/error/smoge_error.dart';
 import 'package:smoge/domain/repository/pollution_repository.dart';
 
 class _Urls {

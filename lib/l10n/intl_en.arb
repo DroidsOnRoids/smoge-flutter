@@ -28,20 +28,12 @@
   "@connectionError": {
     "description": ""
   },
-  "clientError": "Resource not found",
-  "@clientError": {
-    "description": ""
-  },
-  "serverError": "Internal server error",
-  "@serverError": {
+  "unsuccessfulResponseError": "Something went wrong, please try again.",
+  "@unsuccessfulResponseError": {
     "description": ""
   },
   "unknownError": "Unknown error",
   "@unknownError": {
-    "description": ""
-  },
-  "emptyResultError": "Request body was empty",
-  "@emptyResultError": {
     "description": ""
   },
   "measuringPoints": "Measuring points",
