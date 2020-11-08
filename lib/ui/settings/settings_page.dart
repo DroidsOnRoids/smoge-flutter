@@ -8,7 +8,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) => SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text(S.of(context).settings)],
+          children: <Widget>[Text(Strings.of(context).settings)],
         ),
       );
 }

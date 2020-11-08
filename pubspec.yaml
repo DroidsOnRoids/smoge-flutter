@@ -29,6 +29,8 @@ dependencies:
   provider: ^4.3.1
   intl: 0.16.1
   intl_translation: 0.17.10+1
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -79,3 +81,4 @@ flutter:
 
 flutter_intl:
   enabled: true
+  class_name: Strings

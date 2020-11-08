@@ -45,7 +45,7 @@ class HomePageState extends State<HomePage> {
       );
 
   Widget _buildTitle() => Text(
-        S.of(context).exampleCityName,
+        Strings.of(context).exampleCityName,
         style: Theme.of(context).textTheme.subtitle1,
         textAlign: TextAlign.center,
       );
@@ -63,7 +63,7 @@ class HomePageState extends State<HomePage> {
               fromValue: 0,
               toValue: 310,
             ),
-            Text(S.of(context).airQualityNorm,
+            Text(Strings.of(context).airQualityNorm,
                 style: Theme.of(context).textTheme.subtitle2),
             _buildDetailsWidget(),
           ],
@@ -91,7 +91,7 @@ class HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Opacity(opacity: 0.5, child: Text(S.of(context).details)),
+            Opacity(opacity: 0.5, child: Text(Strings.of(context).details)),
             SizedBox(height: 5),
             Image.asset(AppIcons.arrowDown, width: 7, height: 7),
           ],

@@ -57,5 +57,5 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
 
   @override
   Widget build(BuildContext context) =>
-      Text(S.of(context).percentage(_number), style: Theme.of(context).textTheme.headline6);
+      Text(Strings.of(context).percentage(_number), style: Theme.of(context).textTheme.headline6);
 }

@@ -123,11 +123,11 @@ class ActivityWidget extends StatelessWidget {
   String _titleForActivityType(BuildContext context, ActivityType activityType) {
     switch (activityType) {
       case ActivityType.walking:
-        return S.of(context).activityWalking;
+        return Strings.of(context).activityWalking;
       case ActivityType.running:
-        return S.of(context).activityRunning;
+        return Strings.of(context).activityRunning;
       case ActivityType.biking:
-        return S.of(context).activityBiking;
+        return Strings.of(context).activityBiking;
     }
 
     return null;
