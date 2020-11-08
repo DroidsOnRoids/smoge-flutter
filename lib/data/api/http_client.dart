@@ -27,12 +27,8 @@ class HttpClient {
         } else {
           return Result<dynamic>.value(jsonDecode(response.body));
         }
-      } else if (statusCode >= 400 && statusCode < 500) {
-        return Result<dynamic>.error(ClientErrorException());
-      } else if (statusCode >= 500 && statusCode < 600) {
-        return Result<dynamic>.error(ServerErrorException());
       } else {
-        return Result<dynamic>.error(UnknownException());
+        return Result<dynamic>.error(UnsuccessfulResponseException());
       }
     } on SocketException {
       return Result<dynamic>.error(ConnectionException());
