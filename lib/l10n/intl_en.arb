@@ -24,6 +24,10 @@
   "@details": {
     "description": ""
   },
+  "pollutionDataDownloadError": "Could not download pollution data",
+  "@pollutionDataDownloadError": {
+    "description": ""
+  },
   "connectionError": "No internet connection",
   "@connectionError": {
     "description": ""

@@ -83,7 +83,7 @@ class HomePageState extends State<HomePage> {
     } else if (firstStation.result.isError) {
       final error = firstStation.result.asError;
       if (error is PollutionDataDownloadError) {
-        return Text("foo");
+        return Text(Strings.of(context).pollutionDataDownloadError);
       } else {
         return Text(Strings.of(context).unknownError);
       }
