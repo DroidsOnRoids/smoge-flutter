@@ -26,7 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "activityBiking" : MessageLookupByLibrary.simpleMessage("Radfahren"),
     "activityRunning" : MessageLookupByLibrary.simpleMessage("Laufen"),
     "activityWalking" : MessageLookupByLibrary.simpleMessage("Wandern"),
-    "airQualityNorm" : MessageLookupByLibrary.simpleMessage("normal"),
+    "airQualityNorm" : MessageLookupByLibrary.simpleMessage("der Norm"),
     "connectionError" : MessageLookupByLibrary.simpleMessage("Keine Internetverbindung"),
     "details" : MessageLookupByLibrary.simpleMessage("Einzelheiten"),
     "exampleCityName" : MessageLookupByLibrary.simpleMessage("Breslau"),

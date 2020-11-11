@@ -1,33 +1,59 @@
 {
   "@@locale": "fr",
   "activityBiking": "Faire du vélo",
-  "@activityBiking": {},
+  "@activityBiking": {
+    "description": "Biking activity"
+  },
   "activityRunning": "Courir",
-  "@activityRunning": {},
+  "@activityRunning": {
+    "description": "Running activity"
+  },
   "activityWalking": "Marcher",
   "@activityWalking": {
     "description": "Walking activity"
   },
-  "airQualityNorm": "normal",
-  "@airQualityNorm": {},
+  "airQualityNorm": "de la norme",
+  "@airQualityNorm": {
+    "description": "Air quality norm percentage label"
+  },
   "connectionError": "Pas de connexion Internet",
-  "@connectionError": {},
+  "@connectionError": {
+    "description": "Error message for socket exceptions"
+  },
   "details": "Détails",
-  "@details": {},
+  "@details": {
+    "description": "Details expandable label"
+  },
   "exampleCityName": "Wrocław",
-  "@exampleCityName": {},
+  "@exampleCityName": {
+    "description": "Name of the sample city"
+  },
   "findBestRoute": "Trouver le meilleur itinéraire",
-  "@findBestRoute": {},
+  "@findBestRoute": {
+    "description": "Route finding screen label"
+  },
   "measuringPoints": "Points de mesure",
-  "@measuringPoints": {},
+  "@measuringPoints": {
+    "description": "Measurement points screen label"
+  },
   "percentage": "{value}%",
-  "@percentage": {},
+  "@percentage": {
+    "description": "Pollution percentage norm scheme"
+  },
   "pollutionDataDownloadError": "Impossible de télécharger les données de pollution",
-  "@pollutionDataDownloadError": {},
+  "@pollutionDataDownloadError": {
+    "description": "Error message for pollution data downloading error"
+  },
   "settings": "Paramètres",
-  "@settings": {},
+  "@settings": {
+    "description": "Settings screen label"
+  },
   "unknownError": "Erreur inconnue",
-  "@unknownError": {},
+  "@unknownError": {
+    "description": "Error messages for cases not belonging to any known category"
+  },
   "unsuccessfulResponseError": "Quelque chose s'est mal passé, veuillez réessayer plus tard.",
-  "@unsuccessfulResponseError": {}
+  "@unsuccessfulResponseError": {
+    "description": "Error message for cases when connection succeeded but processing has failed at later stages"
+  }
 }

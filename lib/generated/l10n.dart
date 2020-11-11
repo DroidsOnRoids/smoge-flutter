@@ -40,7 +40,7 @@ class Strings {
     return Intl.message(
       'Biking',
       name: 'activityBiking',
-      desc: '',
+      desc: 'Biking activity',
       args: [],
     );
   }
@@ -50,7 +50,7 @@ class Strings {
     return Intl.message(
       'Running',
       name: 'activityRunning',
-      desc: '',
+      desc: 'Running activity',
       args: [],
     );
   }
@@ -70,7 +70,7 @@ class Strings {
     return Intl.message(
       'norm',
       name: 'airQualityNorm',
-      desc: '',
+      desc: 'Air quality norm percentage label',
       args: [],
     );
   }
@@ -80,7 +80,7 @@ class Strings {
     return Intl.message(
       'No internet connection',
       name: 'connectionError',
-      desc: '',
+      desc: 'Error message for socket exceptions',
       args: [],
     );
   }
@@ -90,7 +90,7 @@ class Strings {
     return Intl.message(
       'Details',
       name: 'details',
-      desc: '',
+      desc: 'Details expandable label',
       args: [],
     );
   }
@@ -100,7 +100,7 @@ class Strings {
     return Intl.message(
       'Wrocław',
       name: 'exampleCityName',
-      desc: '',
+      desc: 'Name of the sample city',
       args: [],
     );
   }
@@ -120,7 +120,7 @@ class Strings {
     return Intl.message(
       'Measuring points',
       name: 'measuringPoints',
-      desc: '',
+      desc: 'Measurement points screen label',
       args: [],
     );
   }
@@ -140,7 +140,7 @@ class Strings {
     return Intl.message(
       'Could not download pollution data',
       name: 'pollutionDataDownloadError',
-      desc: '',
+      desc: 'Error message for pollution data downloading error',
       args: [],
     );
   }
@@ -150,7 +150,7 @@ class Strings {
     return Intl.message(
       'Settings',
       name: 'settings',
-      desc: '',
+      desc: 'Settings screen label',
       args: [],
     );
   }
@@ -160,7 +160,7 @@ class Strings {
     return Intl.message(
       'Unknown error',
       name: 'unknownError',
-      desc: '',
+      desc: 'Error messages for cases not belonging to any known category',
       args: [],
     );
   }
@@ -170,7 +170,7 @@ class Strings {
     return Intl.message(
       'Something went wrong, please try again.',
       name: 'unsuccessfulResponseError',
-      desc: '',
+      desc: 'Error message for cases when connection succeeded but processing has failed at later stages',
       args: [],
     );
   }
