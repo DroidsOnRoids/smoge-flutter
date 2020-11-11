@@ -35,12 +35,12 @@ class Strings {
     return Localizations.of<Strings>(context, Strings);
   }
 
-  /// `Walking`
-  String get activityWalking {
+  /// `Biking`
+  String get activityBiking {
     return Intl.message(
-      'Walking',
-      name: 'activityWalking',
-      desc: 'Walking activity',
+      'Biking',
+      name: 'activityBiking',
+      desc: '',
       args: [],
     );
   }
@@ -55,22 +55,12 @@ class Strings {
     );
   }
 
-  /// `Biking`
-  String get activityBiking {
+  /// `Walking`
+  String get activityWalking {
     return Intl.message(
-      'Biking',
-      name: 'activityBiking',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Wroclaw`
-  String get exampleCityName {
-    return Intl.message(
-      'Wroclaw',
-      name: 'exampleCityName',
-      desc: '',
+      'Walking',
+      name: 'activityWalking',
+      desc: 'Walking activity',
       args: [],
     );
   }
@@ -80,26 +70,6 @@ class Strings {
     return Intl.message(
       'norm',
       name: 'airQualityNorm',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Details`
-  String get details {
-    return Intl.message(
-      'Details',
-      name: 'details',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Could not download pollution data`
-  String get pollutionDataDownloadError {
-    return Intl.message(
-      'Could not download pollution data',
-      name: 'pollutionDataDownloadError',
       desc: '',
       args: [],
     );
@@ -115,41 +85,21 @@ class Strings {
     );
   }
 
-  /// `Something went wrong, please try again.`
-  String get unsuccessfulResponseError {
+  /// `Details`
+  String get details {
     return Intl.message(
-      'Something went wrong, please try again.',
-      name: 'unsuccessfulResponseError',
+      'Details',
+      name: 'details',
       desc: '',
       args: [],
     );
   }
 
-  /// `Unknown error`
-  String get unknownError {
+  /// `Wrocław`
+  String get exampleCityName {
     return Intl.message(
-      'Unknown error',
-      name: 'unknownError',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Measuring points`
-  String get measuringPoints {
-    return Intl.message(
-      'Measuring points',
-      name: 'measuringPoints',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Settings`
-  String get settings {
-    return Intl.message(
-      'Settings',
-      name: 'settings',
+      'Wrocław',
+      name: 'exampleCityName',
       desc: '',
       args: [],
     );
@@ -165,6 +115,16 @@ class Strings {
     );
   }
 
+  /// `Measuring points`
+  String get measuringPoints {
+    return Intl.message(
+      'Measuring points',
+      name: 'measuringPoints',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `{value}%`
   String percentage(Object value) {
     return Intl.message(
@@ -172,6 +132,46 @@ class Strings {
       name: 'percentage',
       desc: '',
       args: [value],
+    );
+  }
+
+  /// `Could not download pollution data`
+  String get pollutionDataDownloadError {
+    return Intl.message(
+      'Could not download pollution data',
+      name: 'pollutionDataDownloadError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown error`
+  String get unknownError {
+    return Intl.message(
+      'Unknown error',
+      name: 'unknownError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong, please try again.`
+  String get unsuccessfulResponseError {
+    return Intl.message(
+      'Something went wrong, please try again.',
+      name: 'unsuccessfulResponseError',
+      desc: '',
+      args: [],
     );
   }
 }
@@ -182,6 +182,9 @@ class AppLocalizationDelegate extends LocalizationsDelegate<Strings> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
+      Locale.fromSubtags(languageCode: 'fr'),
+      Locale.fromSubtags(languageCode: 'pl'),
     ];
   }
 

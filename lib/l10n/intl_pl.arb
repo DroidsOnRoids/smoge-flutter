@@ -1,0 +1,33 @@
+{
+  "@@locale": "pl",
+  "activityBiking": "Jazda na rowerze",
+  "@activityBiking": {},
+  "activityRunning": "Bieganie",
+  "@activityRunning": {},
+  "activityWalking": "Chodzenie",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "airQualityNorm": "normalna",
+  "@airQualityNorm": {},
+  "connectionError": "Brak połączenia z internetem",
+  "@connectionError": {},
+  "details": "Szczegóły",
+  "@details": {},
+  "exampleCityName": "Wrocław",
+  "@exampleCityName": {},
+  "findBestRoute": "Znajdź najlepszą trasę",
+  "@findBestRoute": {},
+  "measuringPoints": "Punkty pomiarowe",
+  "@measuringPoints": {},
+  "percentage": "{value}%",
+  "@percentage": {},
+  "pollutionDataDownloadError": "Nie udało się pobrać danych o zanieczyszczeniach",
+  "@pollutionDataDownloadError": {},
+  "settings": "Ustawienia",
+  "@settings": {},
+  "unknownError": "Nieznany błąd",
+  "@unknownError": {},
+  "unsuccessfulResponseError": "Coś poszło nie tak, spróbuj ponownie później.",
+  "@unsuccessfulResponseError": {}
+}

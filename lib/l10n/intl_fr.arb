@@ -1,0 +1,33 @@
+{
+  "@@locale": "fr",
+  "activityBiking": "Faire du vélo",
+  "@activityBiking": {},
+  "activityRunning": "Courir",
+  "@activityRunning": {},
+  "activityWalking": "Marcher",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "airQualityNorm": "normal",
+  "@airQualityNorm": {},
+  "connectionError": "Pas de connexion Internet",
+  "@connectionError": {},
+  "details": "Détails",
+  "@details": {},
+  "exampleCityName": "Wrocław",
+  "@exampleCityName": {},
+  "findBestRoute": "Trouver le meilleur itinéraire",
+  "@findBestRoute": {},
+  "measuringPoints": "Points de mesure",
+  "@measuringPoints": {},
+  "percentage": "{value}%",
+  "@percentage": {},
+  "pollutionDataDownloadError": "Impossible de télécharger les données de pollution",
+  "@pollutionDataDownloadError": {},
+  "settings": "Paramètres",
+  "@settings": {},
+  "unknownError": "Erreur inconnue",
+  "@unknownError": {},
+  "unsuccessfulResponseError": "Quelque chose s'est mal passé, veuillez réessayer plus tard.",
+  "@unsuccessfulResponseError": {}
+}

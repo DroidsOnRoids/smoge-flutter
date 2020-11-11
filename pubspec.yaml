@@ -82,3 +82,5 @@ flutter:
 flutter_intl:
   enabled: true
   class_name: Strings
+  localizely:
+    project_id: 39cf3f3a-a154-4d3f-85b5-f57e71774f3e

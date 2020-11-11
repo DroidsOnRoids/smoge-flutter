@@ -1,0 +1,33 @@
+{
+  "@@locale": "de",
+  "activityBiking": "Radfahren",
+  "@activityBiking": {},
+  "activityRunning": "Laufen",
+  "@activityRunning": {},
+  "activityWalking": "Wandern",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "airQualityNorm": "normal",
+  "@airQualityNorm": {},
+  "connectionError": "Keine Internetverbindung",
+  "@connectionError": {},
+  "details": "Einzelheiten",
+  "@details": {},
+  "exampleCityName": "Breslau",
+  "@exampleCityName": {},
+  "findBestRoute": "Finde die beste Route",
+  "@findBestRoute": {},
+  "measuringPoints": "Messpunkte",
+  "@measuringPoints": {},
+  "percentage": "{value}%",
+  "@percentage": {},
+  "pollutionDataDownloadError": "Verschmutzungsdaten konnten nicht heruntergeladen werden",
+  "@pollutionDataDownloadError": {},
+  "settings": "Einstellungen",
+  "@settings": {},
+  "unknownError": "Unbekannter Fehler",
+  "@unknownError": {},
+  "unsuccessfulResponseError": "Etwas ist schief gelaufen, bitte versuche es erneut.",
+  "@unsuccessfulResponseError": {}
+}

@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "airQualityNorm" : MessageLookupByLibrary.simpleMessage("norm"),
     "connectionError" : MessageLookupByLibrary.simpleMessage("No internet connection"),
     "details" : MessageLookupByLibrary.simpleMessage("Details"),
-    "exampleCityName" : MessageLookupByLibrary.simpleMessage("Wroclaw"),
+    "exampleCityName" : MessageLookupByLibrary.simpleMessage("Wrocław"),
     "findBestRoute" : MessageLookupByLibrary.simpleMessage("Find best route"),
     "measuringPoints" : MessageLookupByLibrary.simpleMessage("Measuring points"),
     "percentage" : m0,

@@ -1,59 +1,33 @@
 {
   "@@locale": "en",
+  "activityBiking": "Biking",
+  "@activityBiking": {},
+  "activityRunning": "Running",
+  "@activityRunning": {},
   "activityWalking": "Walking",
   "@activityWalking": {
     "description": "Walking activity"
   },
-  "activityRunning": "Running",
-  "@activityRunning": {
-    "description": ""
-  },
-  "activityBiking": "Biking",
-  "@activityBiking": {
-    "description": ""
-  },
-  "exampleCityName": "Wroclaw",
-  "@exampleCityName": {
-    "description": ""
-  },
   "airQualityNorm": "norm",
-  "@airQualityNorm": {
-    "description": ""
-  },
-  "details": "Details",
-  "@details": {
-    "description": ""
-  },
-  "pollutionDataDownloadError": "Could not download pollution data",
-  "@pollutionDataDownloadError": {
-    "description": ""
-  },
+  "@airQualityNorm": {},
   "connectionError": "No internet connection",
-  "@connectionError": {
-    "description": ""
-  },
-  "unsuccessfulResponseError": "Something went wrong, please try again.",
-  "@unsuccessfulResponseError": {
-    "description": ""
-  },
-  "unknownError": "Unknown error",
-  "@unknownError": {
-    "description": ""
-  },
-  "measuringPoints": "Measuring points",
-  "@measuringPoints": {
-    "description": ""
-  },
-  "settings": "Settings",
-  "@settings": {
-    "description": ""
-  },
+  "@connectionError": {},
+  "details": "Details",
+  "@details": {},
+  "exampleCityName": "Wrocław",
+  "@exampleCityName": {},
   "findBestRoute": "Find best route",
-  "@findBestRoute": {
-    "description": ""
-  },
+  "@findBestRoute": {},
+  "measuringPoints": "Measuring points",
+  "@measuringPoints": {},
   "percentage": "{value}%",
-  "@percentage": {
-    "description": ""
-  }
+  "@percentage": {},
+  "pollutionDataDownloadError": "Could not download pollution data",
+  "@pollutionDataDownloadError": {},
+  "settings": "Settings",
+  "@settings": {},
+  "unknownError": "Unknown error",
+  "@unknownError": {},
+  "unsuccessfulResponseError": "Something went wrong, please try again.",
+  "@unsuccessfulResponseError": {}
 }
