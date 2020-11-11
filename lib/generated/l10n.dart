@@ -110,7 +110,7 @@ class Strings {
     return Intl.message(
       'Find best route',
       name: 'findBestRoute',
-      desc: '',
+      desc: 'Route finding screen label',
       args: [],
     );
   }
@@ -130,7 +130,7 @@ class Strings {
     return Intl.message(
       '$value%',
       name: 'percentage',
-      desc: '',
+      desc: 'Pollution percentage norm scheme',
       args: [value],
     );
   }
