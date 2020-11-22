@@ -35,11 +35,11 @@ class _TabBarWidgetState extends State<TabBarWidget> {
         padding: const EdgeInsets.only(bottom: 45.0),
         child: Stack(
           overflow: Overflow.visible,
-          alignment: Alignment.bottomRight,
+          alignment: AlignmentDirectional.bottomEnd,
           children: <Widget>[
-            AnimatedPositioned(
+            AnimatedPositionedDirectional(
               duration: _Constants.animationDuration,
-              right: _areButtonsVisible ? 75.0 : 65.0,
+              end: _areButtonsVisible ? 75.0 : 65.0,
               height: 60.0,
               child: AnimatedOpacity(
                 duration: _Constants.animationDuration,
@@ -64,9 +64,9 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                 isSelected: _areButtonsVisible,
               ),
             ),
-            AnimatedPositioned(
+            AnimatedPositionedDirectional(
               duration: _Constants.animationDuration,
-              left: _isBackButtonVisible ? 0.0 : -50.0,
+              start: _isBackButtonVisible ? 0.0 : -50.0,
               curve: Curves.easeInOut,
               child: BackButtonWidget(
                 onPressed: _backDidTap,

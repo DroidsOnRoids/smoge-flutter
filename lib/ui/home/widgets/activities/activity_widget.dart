@@ -22,9 +22,9 @@ class ActivityWidget extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(
+              padding: EdgeInsetsDirectional.only(
                 top: _Constants.badgeSize / 2,
-                right: _Constants.badgeSize / 2,
+                end: _Constants.badgeSize / 2,
               ),
               child: _buildActivityContainer(
                 context,
@@ -32,8 +32,8 @@ class ActivityWidget extends StatelessWidget {
                 _titleForActivityType(context, activityType),
               ),
             ),
-            Positioned(
-              right: 0,
+            PositionedDirectional(
+              end: 0,
               top: 0,
               child: _buildWarningBadge(activityQuality),
             ),

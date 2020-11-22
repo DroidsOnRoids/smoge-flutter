@@ -22,7 +22,7 @@ class MenuButtonWidget extends StatefulWidget {
 class _MenuButtonWidgetState extends State<MenuButtonWidget>
     with SingleTickerProviderStateMixin {
   bool _isSelected;
-  double _rightPadding;
+  double _endPadding;
   AnimationController _animationController;
 
   @override
@@ -30,7 +30,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
     super.initState();
 
     _isSelected = widget.isSelected;
-    _rightPadding = 0.0;
+    _endPadding = 0.0;
     _animationController = AnimationController(
         duration: Duration(milliseconds: _Constants.animationDuration * 2),
         vsync: this);
@@ -40,14 +40,14 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
   Widget build(BuildContext context) => Container(
         height: _Constants.height,
         decoration: Decorations.buttonContainerDecoration(context).copyWith(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(_Constants.cornerRadius),
-              bottomLeft: Radius.circular(_Constants.cornerRadius)),
+          borderRadius: BorderRadiusDirectional.only(
+              topStart: Radius.circular(_Constants.cornerRadius),
+              bottomStart: Radius.circular(_Constants.cornerRadius)),
         ),
         child: AnimatedPadding(
-          padding: EdgeInsets.only(right: _rightPadding),
+          padding: EdgeInsetsDirectional.only(end: _endPadding),
           duration: Duration(milliseconds: _Constants.animationDuration),
-          curve: _rightPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
+          curve: _endPadding == 0.0 ? Curves.easeOutQuint : Curves.linear,
           onEnd: _paddingAnimationDidEnd,
           child: IconButton(
             icon: AnimatedIcon(
@@ -82,7 +82,7 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
   void _handlePress() {
     setState(() {
       _isSelected = !_isSelected;
-      _rightPadding = _isSelected ? 50.0 : 0.0;
+      _endPadding = _isSelected ? 50.0 : 0.0;
       if (_isSelected) {
         _animationController.forward();
       } else {
@@ -93,8 +93,8 @@ class _MenuButtonWidgetState extends State<MenuButtonWidget>
   }
 
   void _paddingAnimationDidEnd() {
-    if (_rightPadding != 0.0) {
-      setState(() => _rightPadding = 0.0);
+    if (_endPadding != 0.0) {
+      setState(() => _endPadding = 0.0);
       widget.onPressed?.call(_isSelected);
     }
   }
