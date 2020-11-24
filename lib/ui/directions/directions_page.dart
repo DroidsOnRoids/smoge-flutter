@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smoge/generated/l10n.dart';
 
 class DirectionsPage extends StatelessWidget {
   const DirectionsPage();
@@ -6,6 +7,6 @@ class DirectionsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Text('Find best route')],
+        children: <Widget>[Text(Strings.of(context).findBestRoute)],
       );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smoge/app/app_icons.dart';
 import 'package:smoge/ui/home/widgets/activities/activities_widget.dart';
-import 'package:smoge/app/strings.dart';
+import 'package:smoge/generated/l10n.dart';
 
 abstract class _Constants {
   static const double iconSize = 30;
@@ -22,18 +22,18 @@ class ActivityWidget extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(
+              padding: EdgeInsetsDirectional.only(
                 top: _Constants.badgeSize / 2,
-                right: _Constants.badgeSize / 2,
+                end: _Constants.badgeSize / 2,
               ),
               child: _buildActivityContainer(
                 context,
                 _imageForActivityType(activityType),
-                _titleForActivityType(activityType),
+                _titleForActivityType(context, activityType),
               ),
             ),
-            Positioned(
-              right: 0,
+            PositionedDirectional(
+              end: 0,
               top: 0,
               child: _buildWarningBadge(activityQuality),
             ),
@@ -120,14 +120,14 @@ class ActivityWidget extends StatelessWidget {
     return null;
   }
 
-  String _titleForActivityType(ActivityType activityType) {
+  String _titleForActivityType(BuildContext context, ActivityType activityType) {
     switch (activityType) {
       case ActivityType.walking:
-        return Strings.activityWalking;
+        return Strings.of(context).activityWalking;
       case ActivityType.running:
-        return Strings.activityRunning;
+        return Strings.of(context).activityRunning;
       case ActivityType.biking:
-        return Strings.activityBiking;
+        return Strings.of(context).activityBiking;
     }
 
     return null;

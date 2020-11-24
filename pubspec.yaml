@@ -27,6 +27,10 @@ dependencies:
   http: ^0.12.0+4
   json_annotation: ^3.0.1
   provider: ^4.3.1
+  intl: 0.16.1
+  intl_translation: 0.17.10+1
+  flutter_localizations:
+    sdk: flutter
 
 dev_dependencies:
   flutter_test:
@@ -41,7 +45,7 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
+  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -74,3 +78,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_intl:
+  enabled: true
+  class_name: Strings
+  localizely:
+    project_id: 39cf3f3a-a154-4d3f-85b5-f57e71774f3e

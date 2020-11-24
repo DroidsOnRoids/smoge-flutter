@@ -1,0 +1,59 @@
+{
+  "@@locale": "de",
+  "activityBiking": "Radfahren",
+  "@activityBiking": {
+    "description": "Biking activity"
+  },
+  "activityRunning": "Laufen",
+  "@activityRunning": {
+    "description": "Running activity"
+  },
+  "activityWalking": "Wandern",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "airQualityNorm": "der Norm",
+  "@airQualityNorm": {
+    "description": "Air quality norm percentage label"
+  },
+  "connectionError": "Keine Internetverbindung",
+  "@connectionError": {
+    "description": "Error message for socket exceptions"
+  },
+  "details": "Einzelheiten",
+  "@details": {
+    "description": "Details expandable label"
+  },
+  "exampleCityName": "Breslau",
+  "@exampleCityName": {
+    "description": "Name of the sample city"
+  },
+  "findBestRoute": "Finde die beste Route",
+  "@findBestRoute": {
+    "description": "Route finding screen label"
+  },
+  "measuringPoints": "Messpunkte",
+  "@measuringPoints": {
+    "description": "Measurement points screen label"
+  },
+  "percentage": "{value}%",
+  "@percentage": {
+    "description": "Pollution percentage norm scheme"
+  },
+  "pollutionDataDownloadError": "Verschmutzungsdaten konnten nicht heruntergeladen werden",
+  "@pollutionDataDownloadError": {
+    "description": "Error message for pollution data downloading error"
+  },
+  "settings": "Einstellungen",
+  "@settings": {
+    "description": "Settings screen label"
+  },
+  "unknownError": "Unbekannter Fehler",
+  "@unknownError": {
+    "description": "Error messages for cases not belonging to any known category"
+  },
+  "unsuccessfulResponseError": "Etwas ist schief gelaufen, bitte versuche es erneut.",
+  "@unsuccessfulResponseError": {
+    "description": "Error message for cases when connection succeeded but processing has failed at later stages"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "@@locale": "en",
+  "activityBiking": "Biking",
+  "@activityBiking": {
+    "description": "Biking activity"
+  },
+  "activityRunning": "Running",
+  "@activityRunning": {
+    "description": "Running activity"
+  },
+  "activityWalking": "Walking",
+  "@activityWalking": {
+    "description": "Walking activity"
+  },
+  "airQualityNorm": "norm",
+  "@airQualityNorm": {
+    "description": "Air quality norm percentage label"
+  },
+  "connectionError": "No internet connection",
+  "@connectionError": {
+    "description": "Error message for socket exceptions"
+  },
+  "details": "Details",
+  "@details": {
+    "description": "Details expandable label"
+  },
+  "exampleCityName": "Wrocław",
+  "@exampleCityName": {
+    "description": "Name of the sample city"
+  },
+  "findBestRoute": "Find best route",
+  "@findBestRoute": {
+    "description": "Route finding screen label"
+  },
+  "measuringPoints": "Measuring points",
+  "@measuringPoints": {
+    "description": "Measurement points screen label"
+  },
+  "percentage": "{value}%",
+  "@percentage": {
+    "description": "Pollution percentage norm scheme"
+  },
+  "pollutionDataDownloadError": "Could not download pollution data",
+  "@pollutionDataDownloadError": {
+    "description": "Error message for pollution data downloading error"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "Settings screen label"
+  },
+  "unknownError": "Unknown error",
+  "@unknownError": {
+    "description": "Error messages for cases not belonging to any known category"
+  },
+  "unsuccessfulResponseError": "Something went wrong, please try again.",
+  "@unsuccessfulResponseError": {
+    "description": "Error message for cases when connection succeeded but processing has failed at later stages"
+  }
+}

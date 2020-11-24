@@ -9,7 +9,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="smoge"
+        android:label="@string/appName"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

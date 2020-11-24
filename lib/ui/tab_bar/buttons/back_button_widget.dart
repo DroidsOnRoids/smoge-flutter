@@ -15,9 +15,9 @@ class BackButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         height: _Constants.height,
         decoration: Decorations.buttonContainerDecoration(context).copyWith(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(_Constants.cornerRadius),
-              bottomRight: Radius.circular(_Constants.cornerRadius)),
+          borderRadius: BorderRadiusDirectional.only(
+              topEnd: Radius.circular(_Constants.cornerRadius),
+              bottomEnd: Radius.circular(_Constants.cornerRadius)),
         ),
         child: IconButton(
           icon: Icon(Icons.arrow_back),

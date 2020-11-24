@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smoge/generated/l10n.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage();
@@ -7,7 +8,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) => SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[Text('Settings')],
+          children: <Widget>[Text(Strings.of(context).settings)],
         ),
       );
 }

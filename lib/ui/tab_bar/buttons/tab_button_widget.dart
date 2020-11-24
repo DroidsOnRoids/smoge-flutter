@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:smoge/ui/tab_bar/navigation_tab.dart';
 import 'package:smoge/utils/decorations.dart';
 
@@ -18,13 +19,13 @@ class TabButtonWidget extends StatefulWidget {
 }
 
 class _TabButtonWidgetState extends State<TabButtonWidget> {
-  Alignment _alignment;
+  AlignmentDirectional _alignment;
 
   @override
   void initState() {
     super.initState();
 
-    _alignment = Alignment.bottomRight;
+    _alignment = AlignmentDirectional.bottomEnd;
   }
 
   @override
@@ -34,7 +35,7 @@ class _TabButtonWidgetState extends State<TabButtonWidget> {
         curve: Curves.easeInOut,
         onEnd: _animationDidEnd,
         child: Container(
-          margin: EdgeInsets.only(left: 25.0),
+          margin: EdgeInsetsDirectional.only(start: 25.0),
           height: _Constants.size,
           width: _Constants.size,
           decoration: Decorations.buttonContainerDecoration(context).copyWith(
@@ -44,16 +45,16 @@ class _TabButtonWidgetState extends State<TabButtonWidget> {
             color: Colors.white,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
-            onPressed: () => setState(() => _alignment = Alignment.topRight),
+            onPressed: () => setState(() => _alignment = AlignmentDirectional.topEnd),
           ),
         ),
       );
 
   void _animationDidEnd() {
-    if (_alignment == Alignment.bottomRight) {
+    if (_alignment == AlignmentDirectional.bottomEnd) {
       widget.onPressed?.call();
     } else {
-      setState(() => _alignment = Alignment.bottomRight);
+      setState(() => _alignment = AlignmentDirectional.bottomEnd);
     }
   }
 }

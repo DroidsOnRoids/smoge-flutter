@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smoge/generated/l10n.dart';
 
 class AnimatedPercentageWidget extends StatefulWidget {
   const AnimatedPercentageWidget({
@@ -56,5 +57,5 @@ class _AnimatedPercentageWidgetState extends State<AnimatedPercentageWidget>
 
   @override
   Widget build(BuildContext context) =>
-      Text('$_number%', style: Theme.of(context).textTheme.headline6);
+      Text(Strings.of(context).percentage(_number), style: Theme.of(context).textTheme.headline6);
 }

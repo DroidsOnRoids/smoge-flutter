@@ -1,3 +1,3 @@
-abstract class SmogeError {
-  String get title;
-}
+abstract class SmogeError {}
+
+class PollutionDataDownloadError implements SmogeError {}

@@ -1,22 +1,16 @@
-import 'package:smoge/app/strings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:smoge/data/api/api_exception.dart';
+import 'package:smoge/generated/l10n.dart';
 
 abstract class ApiExceptionMapper {
-  static String toErrorMessage(Object error) {
+  static String toErrorMessage(BuildContext context, Object error) {
     if (error is ApiException) {
       if (error is ConnectionException) {
-        return Strings.connectionError;
-      } else if (error is ClientErrorException) {
-        return Strings.clientError;
-      } else if (error is ServerErrorException) {
-        return Strings.serverError;
-      } else if (error is EmptyResultException) {
-        return Strings.emptyResultError;
-      } else {
-        return Strings.unknownError;
+        return Strings.of(context).connectionError;
+      } else if (error is UnsuccessfulResponseException) {
+        return Strings.of(context).unsuccessfulResponseError;
       }
-    } else {
-      return Strings.unknownError;
     }
+    return Strings.of(context).unknownError;
   }
 }
