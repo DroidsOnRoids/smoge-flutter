@@ -50,5 +50,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>To properly detect nearby stations, we need access to your phone’s location.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>TTo properly detect nearby stations, we need access to your phone’s location.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>To properly detect nearby stations, we need access to your phone’s location.</string>
 </dict>
 </plist>

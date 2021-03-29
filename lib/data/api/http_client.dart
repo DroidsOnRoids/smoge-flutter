@@ -19,7 +19,7 @@ class HttpClient {
     Response response;
 
     try {
-      response = await get(path);
+      response = await get(Uri.parse(path));
       final statusCode = response.statusCode;
       if (statusCode >= 200 && statusCode < 299) {
         if (response.body.isEmpty) {
